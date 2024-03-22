@@ -62,3 +62,44 @@ create table invoice_details(
 	foreign key(invoice_id) references invoices(invoice_id),
 	foreign key(food_id) references foods(food_id)
 )
+
+-- Inserting data into the positions table
+INSERT INTO positions (position_name) VALUES ('Manager');
+INSERT INTO positions (position_name) VALUES ('Waiter');
+INSERT INTO positions (position_name) VALUES ('Chef');
+
+-- Inserting data into the users table
+INSERT INTO users (user_name, user_address, phone_number, email, password, salary, position_id) VALUES ('John Doe', '123 Main St', '123-456-7890', 'john.doe@example.com', 'password', 50000, 1);
+INSERT INTO users (user_name, user_address, phone_number, email, password, salary, position_id) VALUES ('Jane Smith', '456 Elm St', '987-654-3210', 'jane.smith@example.com', 'password', 30000, 2);
+
+-- Inserting data into the food_categories table
+INSERT INTO food_categories (category_name) VALUES ('Appetizer');
+INSERT INTO food_categories (category_name) VALUES ('Main Course');
+INSERT INTO food_categories (category_name) VALUES ('Dessert');
+
+-- Inserting data into the foods table
+INSERT INTO foods (food_name, category_id) VALUES ('Spring Rolls', 1);
+INSERT INTO foods (food_name, category_id) VALUES ('Pho', 2);
+INSERT INTO foods (food_name, category_id) VALUES ('Cheesecake', 3);
+
+-- Inserting data into the food_prices table
+INSERT INTO food_prices (food_id, price_date, price) VALUES (1, '2024-01-01', 5.00);
+INSERT INTO food_prices (food_id, price_date, price) VALUES (2, '2024-01-01', 10.00);
+INSERT INTO food_prices (food_id, price_date, price) VALUES (3, '2024-01-01', 7.50);
+
+-- Inserting data into the dining_tables table
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 1', 'empty');
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 2', 'reserved');
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 3', 'in use');
+
+-- Inserting data into the invoices table
+INSERT INTO invoices (user_id, table_id, total_money) VALUES (1, 1, 15.00);
+INSERT INTO invoices (user_id, table_id, total_money) VALUES (2, 2, 22.50);
+
+-- Inserting data into the invoice_details table
+INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (1, 1, 2);
+INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (1, 2, 1);
+INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (2, 3, 3);
+
+select * from dining_tables
+select * from users
