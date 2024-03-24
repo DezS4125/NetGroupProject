@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,14 @@ namespace NetGroupProject
             log = new Log(txtLog);
             this.userID = userID;
             log.writeAndUpdate("User ID-"+userID+" logged into the system");
+
+            clsDatabase.openConnection();
+            SqlCommand com = new SqlCommand("select user_name from users where user_id=@user_id", clsDatabase.con);
+            SqlParameter p1 = new SqlParameter("@user_id", SqlDbType.Int);
+            p1.Value = Convert.ToInt32(this.userID);
+            com.Parameters.Add(p1);
+            lblWelcome.Text = "Welcome back, " + (string)com.ExecuteScalar();
+            clsDatabase.closeConnection();
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {

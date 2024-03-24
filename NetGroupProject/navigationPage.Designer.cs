@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -61,15 +61,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "A Restaurant Management System!";
             // 
-            // label2
+            // lblWelcome
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(188, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Welcome back, {name}";
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(188, 76);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(183, 18);
+            this.lblWelcome.TabIndex = 2;
+            this.lblWelcome.Text = "Welcome back, {name}";
             // 
             // button1
             // 
@@ -119,7 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "navigationPage";
@@ -136,7 +136,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtLog;
