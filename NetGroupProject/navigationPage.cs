@@ -16,13 +16,12 @@ namespace NetGroupProject
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Form1 loginPage = new Form1();
+            loginPage.ShowDialog();
+            this.Close();
 
         }
     }

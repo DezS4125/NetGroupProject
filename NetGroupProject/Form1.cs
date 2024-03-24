@@ -53,11 +53,10 @@ namespace NetGroupProject
                 clsDatabase.closeConnection();
                 if (result)
                 {
-                    MessageBox.Show("Login successful!","Success!", MessageBoxButtons.OK);
-                    //  this.Hide();
-                    //  FormPersonalPage personalpage = new FormPersonalPage(staff_id);
-                    //  personalpage.ShowDialog();
-                    //  this.Close();
+                    this.Hide();
+                    navigationPage navigationPage = new navigationPage();
+                    navigationPage.ShowDialog();
+                    this.Close();
                 }
                 if (!result)
                 {
