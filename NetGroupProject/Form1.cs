@@ -54,7 +54,7 @@ namespace NetGroupProject
                 if (result)
                 {
                     this.Hide();
-                    navigationPage navigationPage = new navigationPage();
+                    navigationPage navigationPage = new navigationPage(userID);
                     navigationPage.ShowDialog();
                     this.Close();
                 }

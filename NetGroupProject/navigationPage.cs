@@ -12,11 +12,11 @@ namespace NetGroupProject
 {
     public partial class navigationPage : Form
     {
-        public navigationPage()
+        public navigationPage(string userID)
         {
             InitializeComponent();
             Log log = new Log(txtLog);
-            log.writeLogFile();
+            log.writeLogFile("User ID-"+userID+" logged into the system");
             log.readLogFile();
         }
         private void btnLogout_Click(object sender, EventArgs e)
