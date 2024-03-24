@@ -12,6 +12,13 @@ namespace NetGroupProject
         // A very lazy implementation of a log system
         string logFilePath = @"../../logs/app.log";
         TextBox logTextBox;
+        public Log()
+        {
+            if (!System.IO.File.Exists(logFilePath))
+            {
+                System.IO.File.Create(logFilePath).Close();
+            }
+        }
         public Log(TextBox logControlForm) { 
             if (!System.IO.File.Exists(logFilePath))
             {
@@ -19,7 +26,6 @@ namespace NetGroupProject
             }
             logTextBox = logControlForm;
             logTextBox.Text = System.IO.File.ReadAllText(logFilePath);
-
         }
         public void readLogFile()
         {

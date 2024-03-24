@@ -12,15 +12,18 @@ namespace NetGroupProject
 {
     public partial class navigationPage : Form
     {
+        Log log;
+        string userID;
         public navigationPage(string userID)
         {
             InitializeComponent();
-            Log log = new Log(txtLog);
-            log.writeLogFile("User ID-"+userID+" logged into the system");
-            log.readLogFile();
+            log = new Log(txtLog);
+            this.userID = userID;
+            log.writeAndUpdate("User ID-"+userID+" logged into the system");
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            log.writeLogFile("User ID-" + userID + " logged into the system");
             this.Hide();
             Form1 loginPage = new Form1();
             loginPage.ShowDialog();

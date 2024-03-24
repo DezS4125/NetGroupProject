@@ -34,7 +34,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -93,7 +95,7 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(202, 141);
+            this.txtLog.Location = new System.Drawing.Point(17, 16);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -101,18 +103,30 @@
             this.txtLog.Size = new System.Drawing.Size(552, 255);
             this.txtLog.TabIndex = 3;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtLog);
+            this.groupBox2.Location = new System.Drawing.Point(185, 125);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(586, 284);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "History log";
+            // 
             // navigationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "navigationPage";
             this.Text = "navigationPage";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +140,6 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
