@@ -18,6 +18,8 @@ namespace NetGroupProject
         public Form1()
         {
             InitializeComponent();
+            userID = txtUserID.Text; 
+            password=txtPassword.Text;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,18 +42,18 @@ namespace NetGroupProject
             try
             {
                 clsDatabase.openConnection();
-                SqlCommand com = new SqlCommand("SELECT dbo.validateStaffCredentials(@input_staff_id , @input_staff_password)", clsDatabase.con);
-                SqlParameter p1 = new SqlParameter("@input_staff_id", SqlDbType.NVarChar);
-                p1.Value = staff_id;
+                SqlCommand com = new SqlCommand("SELECT dbo.validateLogin(@input_id , @input_password)", clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@input_id", SqlDbType.Int);
+                p1.Value = Convert.ToInt32(userID);
                 com.Parameters.Add(p1);
-                SqlParameter p2 = new SqlParameter("@input_staff_password", SqlDbType.NVarChar);
+                SqlParameter p2 = new SqlParameter("@input_password", SqlDbType.NVarChar);
                 p2.Value = password;
                 com.Parameters.Add(p2);
                 bool result = (bool)com.ExecuteScalar();
                 clsDatabase.closeConnection();
                 if (result)
                 {
-                    // MessageBox.Show("Login successful!","Success!", MessageBoxButtons.OK);
+                    MessageBox.Show("Login successful!","Success!", MessageBoxButtons.OK);
                     //  this.Hide();
                     //  FormPersonalPage personalpage = new FormPersonalPage(staff_id);
                     //  personalpage.ShowDialog();
