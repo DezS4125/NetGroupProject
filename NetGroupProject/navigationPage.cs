@@ -15,6 +15,9 @@ namespace NetGroupProject
         public navigationPage()
         {
             InitializeComponent();
+            Log log = new Log(txtLog);
+            log.writeLogFile();
+            log.readLogFile();
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -22,7 +25,6 @@ namespace NetGroupProject
             Form1 loginPage = new Form1();
             loginPage.ShowDialog();
             this.Close();
-
         }
     }
 }
