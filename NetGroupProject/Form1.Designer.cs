@@ -71,6 +71,7 @@
             this.txtUserID.Size = new System.Drawing.Size(185, 20);
             this.txtUserID.TabIndex = 3;
             this.txtUserID.Text = "1";
+            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
             // 
             // txtPassword
             // 
@@ -80,6 +81,7 @@
             this.txtPassword.Size = new System.Drawing.Size(185, 20);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.Text = "password";
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // btnLogin
             // 
@@ -89,6 +91,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // Form1
             // 
