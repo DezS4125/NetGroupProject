@@ -1,6 +1,7 @@
 create database groupProject
 use groupProject
 
+create login mylogin with password = 'mylogin'
 sp_changedbowner mylogin;
 
 create table positions(
@@ -103,3 +104,6 @@ INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (2, 3, 3);
 
 select * from dining_tables
 select * from users
+select invoice_id,user_name, invoice_date,table_name,total_money from invoices as i
+	join users as u on i.user_id = u.user_id
+	join dining_tables as d on i.table_id = d.table_id
