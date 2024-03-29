@@ -33,12 +33,12 @@
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnUserManagement = new System.Windows.Forms.Button();
-            this.btnMenuManagement = new System.Windows.Forms.Button();
-            this.btnInvoiceManagement = new System.Windows.Forms.Button();
-            this.btnTableReservation = new System.Windows.Forms.Button();
-            this.btnRevenueStatistic = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.btnRevenueStatistic = new System.Windows.Forms.Button();
+            this.btnTableReservation = new System.Windows.Forms.Button();
+            this.btnInvoiceManagement = new System.Windows.Forms.Button();
+            this.btnMenuManagement = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -101,61 +101,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation Bar";
             // 
-            // btnUserManagement
-            // 
-            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserManagement.Location = new System.Drawing.Point(3, 72);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Size = new System.Drawing.Size(155, 23);
-            this.btnUserManagement.TabIndex = 0;
-            this.btnUserManagement.Text = "User Management";
-            this.btnUserManagement.UseVisualStyleBackColor = true;
-            // 
-            // btnMenuManagement
-            // 
-            this.btnMenuManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMenuManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuManagement.Location = new System.Drawing.Point(3, 95);
-            this.btnMenuManagement.Name = "btnMenuManagement";
-            this.btnMenuManagement.Size = new System.Drawing.Size(155, 23);
-            this.btnMenuManagement.TabIndex = 1;
-            this.btnMenuManagement.Text = "Menu Management";
-            this.btnMenuManagement.UseVisualStyleBackColor = true;
-            // 
-            // btnInvoiceManagement
-            // 
-            this.btnInvoiceManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInvoiceManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceManagement.Location = new System.Drawing.Point(3, 118);
-            this.btnInvoiceManagement.Name = "btnInvoiceManagement";
-            this.btnInvoiceManagement.Size = new System.Drawing.Size(155, 23);
-            this.btnInvoiceManagement.TabIndex = 2;
-            this.btnInvoiceManagement.Text = "Invoice Management";
-            this.btnInvoiceManagement.UseVisualStyleBackColor = true;
-            // 
-            // btnTableReservation
-            // 
-            this.btnTableReservation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTableReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTableReservation.Location = new System.Drawing.Point(3, 141);
-            this.btnTableReservation.Name = "btnTableReservation";
-            this.btnTableReservation.Size = new System.Drawing.Size(155, 23);
-            this.btnTableReservation.TabIndex = 3;
-            this.btnTableReservation.Text = "Table Reservation";
-            this.btnTableReservation.UseVisualStyleBackColor = true;
-            // 
-            // btnRevenueStatistic
-            // 
-            this.btnRevenueStatistic.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRevenueStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevenueStatistic.Location = new System.Drawing.Point(3, 164);
-            this.btnRevenueStatistic.Name = "btnRevenueStatistic";
-            this.btnRevenueStatistic.Size = new System.Drawing.Size(155, 23);
-            this.btnRevenueStatistic.TabIndex = 4;
-            this.btnRevenueStatistic.Text = "Revenue statistic";
-            this.btnRevenueStatistic.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
             this.button6.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -168,6 +113,62 @@
             this.button6.Text = "Logout";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnRevenueStatistic
+            // 
+            this.btnRevenueStatistic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRevenueStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevenueStatistic.Location = new System.Drawing.Point(3, 164);
+            this.btnRevenueStatistic.Name = "btnRevenueStatistic";
+            this.btnRevenueStatistic.Size = new System.Drawing.Size(155, 23);
+            this.btnRevenueStatistic.TabIndex = 4;
+            this.btnRevenueStatistic.Text = "Revenue statistic";
+            this.btnRevenueStatistic.UseVisualStyleBackColor = true;
+            // 
+            // btnTableReservation
+            // 
+            this.btnTableReservation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTableReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTableReservation.Location = new System.Drawing.Point(3, 141);
+            this.btnTableReservation.Name = "btnTableReservation";
+            this.btnTableReservation.Size = new System.Drawing.Size(155, 23);
+            this.btnTableReservation.TabIndex = 3;
+            this.btnTableReservation.Text = "Table Reservation";
+            this.btnTableReservation.UseVisualStyleBackColor = true;
+            // 
+            // btnInvoiceManagement
+            // 
+            this.btnInvoiceManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInvoiceManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoiceManagement.Location = new System.Drawing.Point(3, 118);
+            this.btnInvoiceManagement.Name = "btnInvoiceManagement";
+            this.btnInvoiceManagement.Size = new System.Drawing.Size(155, 23);
+            this.btnInvoiceManagement.TabIndex = 2;
+            this.btnInvoiceManagement.Text = "Invoice Management";
+            this.btnInvoiceManagement.UseVisualStyleBackColor = true;
+            this.btnInvoiceManagement.Click += new System.EventHandler(this.btnInvoiceManagement_Click);
+            // 
+            // btnMenuManagement
+            // 
+            this.btnMenuManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMenuManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuManagement.Location = new System.Drawing.Point(3, 95);
+            this.btnMenuManagement.Name = "btnMenuManagement";
+            this.btnMenuManagement.Size = new System.Drawing.Size(155, 23);
+            this.btnMenuManagement.TabIndex = 1;
+            this.btnMenuManagement.Text = "Menu Management";
+            this.btnMenuManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.Location = new System.Drawing.Point(3, 72);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(155, 23);
+            this.btnUserManagement.TabIndex = 0;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.UseVisualStyleBackColor = true;
             // 
             // navigationPage
             // 
