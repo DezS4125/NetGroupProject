@@ -41,6 +41,7 @@ namespace NetGroupProject
                 btnAddInvoice.Enabled = true;
                 btnUpdateInvoice.Enabled = false;
                 btnNewInvoice.Enabled = false;
+                btnDelete.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -118,7 +119,7 @@ namespace NetGroupProject
                 p3.Value = cbTable.SelectedValue;
                 SqlParameter p4 = new SqlParameter("@total_money", SqlDbType.Money);
                 p4.Value = tbTotalMoney.Text;
-                SqlParameter p5 = new SqlParameter("@invoice_id", SqlDbType.Money);
+                SqlParameter p5 = new SqlParameter("@invoice_id", SqlDbType.Int);
                 p5.Value = tbInvoiceID.Text;
 
                 con.Parameters.Add(p1);
@@ -199,7 +200,33 @@ namespace NetGroupProject
             cbTable.SelectedValue= tableID;
             tbTotalMoney.Text = totalMoney;
             btnUpdateInvoice.Enabled = true;
-            btnAddInvoice.Enabled = false;   
+            btnAddInvoice.Enabled = false;
+            btnDelete.Enabled = true;
+            btnNewInvoice.Enabled = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strInsert = "DELETE FROM invoices WHERE invoice_id = @invoice_id";
+                clsDatabase.openConnection();
+                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@invoice_id", SqlDbType.Int);
+                p1.Value = tbInvoiceID.Text;
+                con.Parameters.Add(p1);
+                con.ExecuteNonQuery();
+                MessageBox.Show("Deleted successfully!!!");
+                clsDatabase.closeConnection();
+                btnUpdateInvoice.Enabled = false;
+                btnDelete.Enabled = false;
+                initialize_invoice_list();
+                clearAllBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
