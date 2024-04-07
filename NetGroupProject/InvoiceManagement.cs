@@ -13,43 +13,89 @@ namespace NetGroupProject
 {
     public partial class InvoiceManagement : Form
     {
+        string invoice_id;
         public InvoiceManagement()
         {
             InitializeComponent();
             initialize_invoice_list();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void initialize_invoice_list()
+        private void btnNewInvoiceClick(object sender, EventArgs e)
         {
             try
             {
+                clearAllBox();
                 clsDatabase.openConnection();
-                SqlCommand com = new SqlCommand("\r\nselect invoice_id,user_name, invoice_date,table_name,total_money from invoices as i\r\n\tjoin users as u on i.user_id = u.user_id\r\n\tjoin dining_tables as d on i.table_id = d.table_id", clsDatabase.con);
-                SqlDataReader reader = com.ExecuteReader();
-                DataTable dataTable = new DataTable();
-                dataTable.Load(reader);
-                dgvInvoiceList.DataSource = dataTable;
-                dgvInvoiceList.Columns["invoice_id"].HeaderText = "Invoice ID";
-                dgvInvoiceList.Columns["invoice_id"].Width = 80;
-                dgvInvoiceList.Columns["user_name"].HeaderText = "Employee Name";
-                dgvInvoiceList.Columns["user_name"].Width = 120;
-                dgvInvoiceList.Columns["invoice_date"].HeaderText = "Date";
-                dgvInvoiceList.Columns["invoice_date"].Width = 120;
-                dgvInvoiceList.Columns["table_name"].HeaderText = "Table Name";
-                dgvInvoiceList.Columns["table_name"].Width = 90;
-                dgvInvoiceList.Columns["total_money"].HeaderText = "Total Money";
-                reader.Close();
+
+                SqlCommand com = new SqlCommand(
+                    "SELECT max(invoice_id)+1 from invoices",
+                    clsDatabase.con
+                );
+
+                tbInvoiceID.Text = com.ExecuteScalar().ToString();
+
                 clsDatabase.closeConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void clearAllBox()
+        {
+            tbInvoiceID.Clear();
+            tbTotalMoney.Clear();
+            dtpInvoiceDate.Value = DateTime.Now;
+            cbUser.SelectedIndex = -1;
+            cbTable.SelectedIndex = -1;
+        }
+        private void initialize_invoice_list()
+        {
+            try
+            {
+                clsDatabase.openConnection();
+
+                SqlCommand com = new SqlCommand(
+                    "SELECT invoice_id, u.user_name, invoice_date, d.table_name, total_money " +
+                    "FROM invoices AS i " +
+                    "JOIN users AS u ON i.user_id = u.user_id " +
+                    "JOIN dining_tables AS d ON i.table_id = d.table_id",
+                    clsDatabase.con
+                );
+
+                SqlDataReader reader = com.ExecuteReader();
+                DataTable datatable = new DataTable();
+                datatable.Load(reader);
+
+                dgvInvoiceList.DataSource = datatable;
+
+                clsDatabase.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dgvInvoiceList_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void dgvInvoiceList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnUpdate_click(object sender, EventArgs e)
+        {
+
         }
     }
 }

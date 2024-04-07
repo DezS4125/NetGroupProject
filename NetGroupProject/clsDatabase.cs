@@ -16,7 +16,7 @@ namespace NetGroupProject
         {
             try
             {
-                con = new SqlConnection("Server=P206M10\\SQLEXPRESS; Database=groupProject;User Id=mylogin;password=mylogin");
+                con = new SqlConnection("Server=WinDev2311Eval; Database=groupProject;User Id=mylogin;password=mylogin");
                 con.Open();
             }
             catch (Exception e)

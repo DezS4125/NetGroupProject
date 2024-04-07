@@ -107,3 +107,10 @@ select * from users
 select invoice_id,user_name, invoice_date,table_name,total_money from invoices as i
 	join users as u on i.user_id = u.user_id
 	join dining_tables as d on i.table_id = d.table_id
+
+
+select user_id, user_name from users
+
+select table_id, table_name from dining_tables
+
+SELECT max(invoice_id)+1 from invoices
