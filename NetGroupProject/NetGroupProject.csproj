@@ -90,6 +90,12 @@
     <Compile Include="TableReservation.Designer.cs">
       <DependentUpon>TableReservation.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableReservationCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableReservationCard.Designer.cs">
+      <DependentUpon>TableReservationCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="tablesTable.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="TableReservation.resx">
       <DependentUpon>TableReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableReservationCard.resx">
+      <DependentUpon>TableReservationCard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="groupProjectDataSet.xsc">
       <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
