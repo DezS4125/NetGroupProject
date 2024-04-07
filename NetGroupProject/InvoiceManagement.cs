@@ -15,7 +15,7 @@ namespace NetGroupProject
 {
     public partial class InvoiceManagement : Form
     {
-        string invoice_id;
+        DataTable dataTableInvoiceDetails;
         public InvoiceManagement()
         {
             InitializeComponent();
@@ -203,8 +203,38 @@ namespace NetGroupProject
             btnAddInvoice.Enabled = false;
             btnDelete.Enabled = true;
             btnNewInvoice.Enabled = true;
-        }
+            collectInvoiceDetailsByIds(Convert.ToInt32(invoiceID));
+            MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
 
+        }
+        private void collectInvoiceDetailsByIds(int invoiceID)
+        {
+            try
+            {
+                clsDatabase.openConnection();
+
+                SqlCommand com = new SqlCommand(
+                    "SELECT i.food_id, food_name, quantity " +
+                    "FROM invoice_details AS i " +
+                    "JOIN foods AS f on  i.food_id = f.food_id " +
+                    "where invoice_id=@invoice_id",
+                    clsDatabase.con
+                );
+                SqlParameter p1 = new SqlParameter("@invoice_id", SqlDbType.Int);
+                p1.Value = invoiceID;
+
+                com.Parameters.Add(p1);
+
+                SqlDataReader reader = com.ExecuteReader();
+                this.dataTableInvoiceDetails = new DataTable();
+                this.dataTableInvoiceDetails.Load(reader);
+                clsDatabase.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try

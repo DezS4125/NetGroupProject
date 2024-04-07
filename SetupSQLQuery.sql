@@ -116,3 +116,5 @@ select table_id, table_name from dining_tables
 SELECT max(invoice_id) from invoices
 select * from invoices
 insert into invoices(invoice_date, user_id, table_id, total_money) values ('2024-04-07 00:06:00',2,3,300);
+
+select * from invoice_details;

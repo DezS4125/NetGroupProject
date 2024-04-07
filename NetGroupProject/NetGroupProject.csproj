@@ -58,6 +58,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoiceDetails.Designer.cs">
+      <DependentUpon>InvoiceDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="InvoiceManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceDetails.resx">
+      <DependentUpon>InvoiceDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceManagement.resx">
       <DependentUpon>InvoiceManagement.cs</DependentUpon>
