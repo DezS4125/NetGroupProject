@@ -49,10 +49,11 @@
             // dgvInvoiceDetailsList
             // 
             this.dgvInvoiceDetailsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoiceDetailsList.Location = new System.Drawing.Point(71, 57);
+            this.dgvInvoiceDetailsList.Location = new System.Drawing.Point(90, 57);
             this.dgvInvoiceDetailsList.Name = "dgvInvoiceDetailsList";
-            this.dgvInvoiceDetailsList.Size = new System.Drawing.Size(276, 133);
+            this.dgvInvoiceDetailsList.Size = new System.Drawing.Size(243, 133);
             this.dgvInvoiceDetailsList.TabIndex = 0;
+            this.dgvInvoiceDetailsList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInvoiceDetailsList_RowHeaderMouseClick);
             // 
             // label1
             // 
@@ -123,6 +124,7 @@
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
