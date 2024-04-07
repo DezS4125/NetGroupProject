@@ -42,6 +42,7 @@ namespace NetGroupProject
                 btnUpdateInvoice.Enabled = false;
                 btnNewInvoice.Enabled = false;
                 btnDelete.Enabled = false;
+                collectInvoiceDetailsByIds(Convert.ToInt32(tbInvoiceID.Text));
             }
             catch (Exception ex)
             {
@@ -132,6 +133,7 @@ namespace NetGroupProject
                 clsDatabase.closeConnection();
                 btnUpdateInvoice.Enabled = false;
                 initialize_invoice_list();
+                addOrUpdateInvoiceDetail();
                 clearAllBox();
             }
             catch (Exception ex)
@@ -178,6 +180,7 @@ namespace NetGroupProject
                 btnAddInvoice.Enabled = false;
                 btnNewInvoice.Enabled = true;
                 initialize_invoice_list();
+                addOrUpdateInvoiceDetail();
             }
             catch (Exception ex)
             {
@@ -263,6 +266,41 @@ namespace NetGroupProject
         {
             InvoiceDetails invoiceDetailsForm = new InvoiceDetails(dataTableInvoiceDetails);
             invoiceDetailsForm.ShowDialog();
+        }
+        private void addOrUpdateInvoiceDetail()
+        {
+            try
+            {
+                int invoiceId = Convert.ToInt32(tbInvoiceID.Text);
+                foreach (DataRow row in dataTableInvoiceDetails.Rows)
+                {
+                    int foodId = Convert.ToInt32(row["food_id"]);
+                    int quantity = Convert.ToInt32(row["quantity"]);
+                    string strInsert = "updateOrInsertInvoiceDetails";
+                    clsDatabase.openConnection();
+                    SqlCommand com = new SqlCommand(strInsert, clsDatabase.con);
+                    com.CommandType = CommandType.StoredProcedure;
+                    SqlParameter p1 = new SqlParameter("@invoiceId", SqlDbType.Int);
+                    p1.Value = invoiceId;
+                    com.Parameters.Add(p1);
+                    SqlParameter p2 = new SqlParameter("@foodId", SqlDbType.Int);
+                    p2.Value = foodId;
+                    com.Parameters.Add(p2);
+                    SqlParameter p3 = new SqlParameter("@quantity", SqlDbType.Int);
+                    p3.Value = quantity;
+                    com.Parameters.Add(p3);
+                    com.ExecuteNonQuery();
+                    //MessageBox.Show("Add or update successfully!!!");
+                    clsDatabase.closeConnection();
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
