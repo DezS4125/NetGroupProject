@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewInvoice = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnUpdateInvoice = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvInvoiceList = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,7 +46,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbTotalMoney = new System.Windows.Forms.TextBox();
             this.btnEditInvoiceDetails = new System.Windows.Forms.Button();
+            this.groupProjectDataSet = new NetGroupProject.groupProjectDataSet();
+            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoicesTableAdapter = new NetGroupProject.groupProjectDataSetTableAdapters.invoicesTableAdapter();
+            this.usersTable = new NetGroupProject.usersTable();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new NetGroupProject.usersTableTableAdapters.usersTableAdapter();
+            this.tablesTable = new NetGroupProject.tablesTable();
+            this.diningtablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dining_tablesTableAdapter = new NetGroupProject.tablesTableTableAdapters.dining_tablesTableAdapter();
+            this.btnAddInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +77,7 @@
             // 
             // btnNewInvoice
             // 
-            this.btnNewInvoice.Location = new System.Drawing.Point(730, 287);
+            this.btnNewInvoice.Location = new System.Drawing.Point(730, 283);
             this.btnNewInvoice.Name = "btnNewInvoice";
             this.btnNewInvoice.Size = new System.Drawing.Size(102, 23);
             this.btnNewInvoice.TabIndex = 1;
@@ -68,15 +85,16 @@
             this.btnNewInvoice.UseVisualStyleBackColor = true;
             this.btnNewInvoice.Click += new System.EventHandler(this.btnNewInvoiceClick);
             // 
-            // btnUpdate
+            // btnUpdateInvoice
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(730, 337);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(102, 23);
-            this.btnUpdate.TabIndex = 2;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_click);
+            this.btnUpdateInvoice.Enabled = false;
+            this.btnUpdateInvoice.Location = new System.Drawing.Point(730, 354);
+            this.btnUpdateInvoice.Name = "btnUpdateInvoice";
+            this.btnUpdateInvoice.Size = new System.Drawing.Size(102, 23);
+            this.btnUpdateInvoice.TabIndex = 2;
+            this.btnUpdateInvoice.Text = "Update";
+            this.btnUpdateInvoice.UseVisualStyleBackColor = true;
+            this.btnUpdateInvoice.Click += new System.EventHandler(this.btnUpdate_click);
             // 
             // btnDelete
             // 
@@ -90,11 +108,12 @@
             // dgvInvoiceList
             // 
             this.dgvInvoiceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoiceList.Location = new System.Drawing.Point(46, 104);
+            this.dgvInvoiceList.Location = new System.Drawing.Point(181, 97);
             this.dgvInvoiceList.Name = "dgvInvoiceList";
-            this.dgvInvoiceList.Size = new System.Drawing.Size(786, 152);
+            this.dgvInvoiceList.Size = new System.Drawing.Size(545, 152);
             this.dgvInvoiceList.TabIndex = 4;
             this.dgvInvoiceList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceList_CellEndEdit);
+            this.dgvInvoiceList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInvoiceList_RowHeaderMouseClick);
             this.dgvInvoiceList.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInvoiceList_RowHeaderMouseDoubleClick);
             // 
             // label2
@@ -150,19 +169,25 @@
             // 
             // cbUser
             // 
+            this.cbUser.DataSource = this.usersBindingSource;
+            this.cbUser.DisplayMember = "user_name";
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(123, 356);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(200, 21);
             this.cbUser.TabIndex = 11;
+            this.cbUser.ValueMember = "user_id";
             // 
             // cbTable
             // 
+            this.cbTable.DataSource = this.diningtablesBindingSource;
+            this.cbTable.DisplayMember = "table_name";
             this.cbTable.FormattingEnabled = true;
             this.cbTable.Location = new System.Drawing.Point(123, 390);
             this.cbTable.Name = "cbTable";
             this.cbTable.Size = new System.Drawing.Size(134, 21);
             this.cbTable.TabIndex = 12;
+            this.cbTable.ValueMember = "table_id";
             // 
             // label6
             // 
@@ -198,11 +223,65 @@
             this.btnEditInvoiceDetails.Text = "Edit Invoice Details";
             this.btnEditInvoiceDetails.UseVisualStyleBackColor = true;
             // 
+            // groupProjectDataSet
+            // 
+            this.groupProjectDataSet.DataSetName = "groupProjectDataSet";
+            this.groupProjectDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoicesBindingSource
+            // 
+            this.invoicesBindingSource.DataMember = "invoices";
+            this.invoicesBindingSource.DataSource = this.groupProjectDataSet;
+            // 
+            // invoicesTableAdapter
+            // 
+            this.invoicesTableAdapter.ClearBeforeFill = true;
+            // 
+            // usersTable
+            // 
+            this.usersTable.DataSetName = "usersTable";
+            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.usersTable;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tablesTable
+            // 
+            this.tablesTable.DataSetName = "tablesTable";
+            this.tablesTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // diningtablesBindingSource
+            // 
+            this.diningtablesBindingSource.DataMember = "dining_tables";
+            this.diningtablesBindingSource.DataSource = this.tablesTable;
+            // 
+            // dining_tablesTableAdapter
+            // 
+            this.dining_tablesTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnAddInvoice
+            // 
+            this.btnAddInvoice.Enabled = false;
+            this.btnAddInvoice.Location = new System.Drawing.Point(730, 318);
+            this.btnAddInvoice.Name = "btnAddInvoice";
+            this.btnAddInvoice.Size = new System.Drawing.Size(102, 23);
+            this.btnAddInvoice.TabIndex = 17;
+            this.btnAddInvoice.Text = "Add";
+            this.btnAddInvoice.UseVisualStyleBackColor = true;
+            this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
+            // 
             // InvoiceManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 434);
+            this.Controls.Add(this.btnAddInvoice);
             this.Controls.Add(this.btnEditInvoiceDetails);
             this.Controls.Add(this.tbTotalMoney);
             this.Controls.Add(this.label7);
@@ -217,12 +296,19 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvInvoiceList);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnUpdateInvoice);
             this.Controls.Add(this.btnNewInvoice);
             this.Controls.Add(this.label1);
             this.Name = "InvoiceManagement";
             this.Text = "InvoiceManagement";
+            this.Load += new System.EventHandler(this.InvoiceManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,7 +318,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewInvoice;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnUpdateInvoice;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvInvoiceList;
         private System.Windows.Forms.Label label2;
@@ -247,5 +333,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbTotalMoney;
         private System.Windows.Forms.Button btnEditInvoiceDetails;
+        private groupProjectDataSet groupProjectDataSet;
+        private System.Windows.Forms.BindingSource invoicesBindingSource;
+        private groupProjectDataSetTableAdapters.invoicesTableAdapter invoicesTableAdapter;
+        private usersTable usersTable;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private usersTableTableAdapters.usersTableAdapter usersTableAdapter;
+        private tablesTable tablesTable;
+        private System.Windows.Forms.BindingSource diningtablesBindingSource;
+        private tablesTableTableAdapters.dining_tablesTableAdapter dining_tablesTableAdapter;
+        private System.Windows.Forms.Button btnAddInvoice;
     }
 }

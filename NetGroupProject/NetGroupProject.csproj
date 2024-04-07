@@ -53,6 +53,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="groupProjectDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InvoiceManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +73,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tablesTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tablesTable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="usersTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usersTable.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +101,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="groupProjectDataSet.xsc">
+      <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="groupProjectDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>groupProjectDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="groupProjectDataSet.xss">
+      <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,6 +121,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="tablesTable.xsc">
+      <DependentUpon>tablesTable.xsd</DependentUpon>
+    </None>
+    <None Include="tablesTable.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tablesTable.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="tablesTable.xss">
+      <DependentUpon>tablesTable.xsd</DependentUpon>
+    </None>
+    <None Include="usersTable.xsc">
+      <DependentUpon>usersTable.xsd</DependentUpon>
+    </None>
+    <None Include="usersTable.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>usersTable.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="usersTable.xss">
+      <DependentUpon>usersTable.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
