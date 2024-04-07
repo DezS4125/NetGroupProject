@@ -101,27 +101,42 @@ namespace NetGroupProject
         }
         private void btnUpdate_click(object sender, EventArgs e)
         {
-            string strInsert = "UPDATE invoices SET user_id = @user_id," +
-                            "invoice_date=@invoice_date," +
-                            "table_id=@table_id," +
-                            "total_money=@total_money" +
-                            "WHERE invoice_id = @invoice_id";
-            clsDatabase.openConnection();
-            SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
-            SqlParameter p1 = new SqlParameter("@invoice_date", SqlDbType.SmallDateTime);
-            p1.Value = dtpInvoiceDate.Value;
-            SqlParameter p2 = new SqlParameter("@user_id", SqlDbType.Int);
-            p2.Value = cbUser.SelectedValue;
-            SqlParameter p3 = new SqlParameter("@table_id", SqlDbType.Int);
-            p3.Value = cbTable.SelectedValue;
-            SqlParameter p4 = new SqlParameter("@total_money", SqlDbType.Money);
-            p4.Value = tbTotalMoney.Text;
+            try
+            {
+                string strInsert = "UPDATE invoices SET user_id = @user_id," +
+                                "invoice_date=@invoice_date," +
+                                "table_id=@table_id," +
+                                "total_money=@total_money " +
+                                "WHERE invoice_id = @invoice_id";
+                clsDatabase.openConnection();
+                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@invoice_date", SqlDbType.SmallDateTime);
+                p1.Value = dtpInvoiceDate.Value;
+                SqlParameter p2 = new SqlParameter("@user_id", SqlDbType.Int);
+                p2.Value = cbUser.SelectedValue;
+                SqlParameter p3 = new SqlParameter("@table_id", SqlDbType.Int);
+                p3.Value = cbTable.SelectedValue;
+                SqlParameter p4 = new SqlParameter("@total_money", SqlDbType.Money);
+                p4.Value = tbTotalMoney.Text;
+                SqlParameter p5 = new SqlParameter("@invoice_id", SqlDbType.Money);
+                p5.Value = tbInvoiceID.Text;
 
-            con.Parameters.Add(p1);
-            con.Parameters.Add(p2);
-            con.Parameters.Add(p3);
-            con.Parameters.Add(p4);
-            con.ExecuteNonQuery();
+                con.Parameters.Add(p1);
+                con.Parameters.Add(p2);
+                con.Parameters.Add(p3);
+                con.Parameters.Add(p4);
+                con.Parameters.Add(p5);
+                con.ExecuteNonQuery();
+                MessageBox.Show("Edited successfully!!!");
+                clsDatabase.closeConnection();
+                btnUpdateInvoice.Enabled = false;
+                initialize_invoice_list();
+                clearAllBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -184,6 +199,7 @@ namespace NetGroupProject
             cbTable.SelectedValue= tableID;
             tbTotalMoney.Text = totalMoney;
             btnUpdateInvoice.Enabled = true;
+            btnAddInvoice.Enabled = false;   
         }
     }
 }
