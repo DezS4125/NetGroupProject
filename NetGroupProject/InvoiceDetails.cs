@@ -55,5 +55,15 @@ namespace NetGroupProject
             newRow["quantity"] = tbQuantity.Text;
             data.Rows.Add(newRow);
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DataTable data = (DataTable)dgvInvoiceDetailsList.DataSource;
+            DataRow newRow = data.Rows[selectedRowIndex];
+            newRow["food_id"] = cbFood.SelectedValue;
+            newRow["food_name"] = cbFood.Text;
+            newRow["quantity"] = tbQuantity.Text;
+        }
+
     }
 }
