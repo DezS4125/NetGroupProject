@@ -58,6 +58,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="groupProjectDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>groupProjectDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InvoiceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +125,17 @@
     </None>
     <None Include="groupProjectDataSet.xss">
       <DependentUpon>groupProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="groupProjectDataSet1.xsc">
+      <DependentUpon>groupProjectDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="groupProjectDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>groupProjectDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="groupProjectDataSet1.xss">
+      <DependentUpon>groupProjectDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

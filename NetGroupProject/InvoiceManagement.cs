@@ -204,7 +204,7 @@ namespace NetGroupProject
             btnDelete.Enabled = true;
             btnNewInvoice.Enabled = true;
             collectInvoiceDetailsByIds(Convert.ToInt32(invoiceID));
-            MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
+            //MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
 
         }
         private void collectInvoiceDetailsByIds(int invoiceID)
@@ -257,6 +257,12 @@ namespace NetGroupProject
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnEditInvoiceDetails_Click(object sender, EventArgs e)
+        {
+            InvoiceDetails invoiceDetailsForm = new InvoiceDetails(dataTableInvoiceDetails);
+            invoiceDetailsForm.ShowDialog();
         }
     }
 }

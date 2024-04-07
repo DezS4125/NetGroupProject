@@ -41,7 +41,11 @@
             this.tbInvoiceID = new System.Windows.Forms.TextBox();
             this.dtpInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.cbUser = new System.Windows.Forms.ComboBox();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTable = new NetGroupProject.usersTable();
             this.cbTable = new System.Windows.Forms.ComboBox();
+            this.diningtablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tablesTable = new NetGroupProject.tablesTable();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbTotalMoney = new System.Windows.Forms.TextBox();
@@ -49,20 +53,16 @@
             this.groupProjectDataSet = new NetGroupProject.groupProjectDataSet();
             this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoicesTableAdapter = new NetGroupProject.groupProjectDataSetTableAdapters.invoicesTableAdapter();
-            this.usersTable = new NetGroupProject.usersTable();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new NetGroupProject.usersTableTableAdapters.usersTableAdapter();
-            this.tablesTable = new NetGroupProject.tablesTable();
-            this.diningtablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dining_tablesTableAdapter = new NetGroupProject.tablesTableTableAdapters.dining_tablesTableAdapter();
             this.btnAddInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -180,6 +180,16 @@
             this.cbUser.TabIndex = 11;
             this.cbUser.ValueMember = "user_id";
             // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.usersTable;
+            // 
+            // usersTable
+            // 
+            this.usersTable.DataSetName = "usersTable";
+            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // cbTable
             // 
             this.cbTable.DataSource = this.diningtablesBindingSource;
@@ -190,6 +200,16 @@
             this.cbTable.Size = new System.Drawing.Size(134, 21);
             this.cbTable.TabIndex = 12;
             this.cbTable.ValueMember = "table_id";
+            // 
+            // diningtablesBindingSource
+            // 
+            this.diningtablesBindingSource.DataMember = "dining_tables";
+            this.diningtablesBindingSource.DataSource = this.tablesTable;
+            // 
+            // tablesTable
+            // 
+            this.tablesTable.DataSetName = "tablesTable";
+            this.tablesTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label6
             // 
@@ -224,6 +244,7 @@
             this.btnEditInvoiceDetails.TabIndex = 16;
             this.btnEditInvoiceDetails.Text = "Edit Invoice Details";
             this.btnEditInvoiceDetails.UseVisualStyleBackColor = true;
+            this.btnEditInvoiceDetails.Click += new System.EventHandler(this.btnEditInvoiceDetails_Click);
             // 
             // groupProjectDataSet
             // 
@@ -239,29 +260,9 @@
             // 
             this.invoicesTableAdapter.ClearBeforeFill = true;
             // 
-            // usersTable
-            // 
-            this.usersTable.DataSetName = "usersTable";
-            this.usersTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.usersTable;
-            // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tablesTable
-            // 
-            this.tablesTable.DataSetName = "tablesTable";
-            this.tablesTable.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // diningtablesBindingSource
-            // 
-            this.diningtablesBindingSource.DataMember = "dining_tables";
-            this.diningtablesBindingSource.DataSource = this.tablesTable;
             // 
             // dining_tablesTableAdapter
             // 
@@ -305,12 +306,12 @@
             this.Text = "InvoiceManagement";
             this.Load += new System.EventHandler(this.InvoiceManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablesTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diningtablesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

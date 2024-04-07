@@ -28,23 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.dgvInvoiceDetailsList = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbQuantity = new System.Windows.Forms.TextBox();
+            this.cbFood = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupProjectDataSet1 = new NetGroupProject.groupProjectDataSet1();
+            this.foodsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.foodsTableAdapter = new NetGroupProject.groupProjectDataSet1TableAdapters.foodsTableAdapter();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetailsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvInvoiceDetailsList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(71, 57);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(276, 133);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvInvoiceDetailsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInvoiceDetailsList.Location = new System.Drawing.Point(71, 57);
+            this.dgvInvoiceDetailsList.Name = "dgvInvoiceDetailsList";
+            this.dgvInvoiceDetailsList.Size = new System.Drawing.Size(276, 133);
+            this.dgvInvoiceDetailsList.TabIndex = 0;
             // 
             // label1
             // 
@@ -58,27 +66,30 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 243);
+            this.label2.Location = new System.Drawing.Point(27, 246);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Quantity";
             // 
-            // textBox2
+            // tbQuantity
             // 
-            this.textBox2.Location = new System.Drawing.Point(103, 239);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.tbQuantity.Location = new System.Drawing.Point(103, 243);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(121, 20);
+            this.tbQuantity.TabIndex = 4;
+            this.tbQuantity.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // comboBox1
+            // cbFood
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(103, 212);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cbFood.DataSource = this.foodsBindingSource;
+            this.cbFood.DisplayMember = "food_name";
+            this.cbFood.FormattingEnabled = true;
+            this.cbFood.Location = new System.Drawing.Point(103, 212);
+            this.cbFood.Name = "cbFood";
+            this.cbFood.Size = new System.Drawing.Size(121, 21);
+            this.cbFood.TabIndex = 5;
+            this.cbFood.ValueMember = "food_id";
             // 
             // label3
             // 
@@ -90,30 +101,67 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Invoice Details";
             // 
-            // button1
+            // groupProjectDataSet1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Done";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupProjectDataSet1.DataSetName = "groupProjectDataSet1";
+            this.groupProjectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // foodsBindingSource
+            // 
+            this.foodsBindingSource.DataMember = "foods";
+            this.foodsBindingSource.DataSource = this.groupProjectDataSet1;
+            // 
+            // foodsTableAdapter
+            // 
+            this.foodsTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(272, 206);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(272, 233);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(272, 262);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 9;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // InvoiceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 285);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(417, 312);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cbFood);
+            this.Controls.Add(this.tbQuantity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvInvoiceDetailsList);
             this.Name = "InvoiceDetails";
             this.Text = "InvoiceDetails";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.InvoiceDetails_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetailsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,12 +169,17 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvInvoiceDetailsList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbQuantity;
+        private System.Windows.Forms.ComboBox cbFood;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private groupProjectDataSet1 groupProjectDataSet1;
+        private System.Windows.Forms.BindingSource foodsBindingSource;
+        private groupProjectDataSet1TableAdapters.foodsTableAdapter foodsTableAdapter;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
