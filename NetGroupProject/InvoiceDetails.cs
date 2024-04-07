@@ -65,5 +65,10 @@ namespace NetGroupProject
             newRow["quantity"] = tbQuantity.Text;
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataTable data = (DataTable)dgvInvoiceDetailsList.DataSource;
+            data.Rows.RemoveAt(selectedRowIndex);
+        }
     }
 }
