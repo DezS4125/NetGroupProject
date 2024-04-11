@@ -134,5 +134,77 @@ namespace NetGroupProject
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strInsert = "UPDATE table_reservation SET user_id = @user_id," +
+                                "customer_name=@customer_name," +
+                                "phone=@phone," +
+                                "email=@email, " +
+                                "reservation_date=@reservation_date, " +
+                                "reservation_duration=@reservation_duration " +
+                                "WHERE reservation_id = @reservation_id";
+                clsDatabase.openConnection();
+                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@user_id", SqlDbType.Int);
+                p1.Value = Convert.ToInt32(userID);
+                SqlParameter p2 = new SqlParameter("@customer_name", SqlDbType.NVarChar);
+                p2.Value = tbCustomerName.Text;
+                SqlParameter p3 = new SqlParameter("@phone", SqlDbType.NVarChar);
+                p3.Value = tbPhoneNumber.Text;
+                SqlParameter p4 = new SqlParameter("@email", SqlDbType.NVarChar);
+                p4.Value = tbEmail.Text;
+                SqlParameter p5 = new SqlParameter("@reservation_date", SqlDbType.SmallDateTime);
+                p5.Value = dtpDate.Value;
+                SqlParameter p6 = new SqlParameter("@reservation_duration", SqlDbType.Int);
+                p6.Value = nupDuration.Value;
+                SqlParameter p7 = new SqlParameter("@reservation_id", SqlDbType.Int);
+                p7.Value = tbReservationID.Text;
+                con.Parameters.Add(p1);
+                con.Parameters.Add(p2);
+                con.Parameters.Add(p3);
+                con.Parameters.Add(p4);
+                con.Parameters.Add(p5);
+                con.Parameters.Add(p6);
+                con.Parameters.Add(p7);
+                con.ExecuteNonQuery();
+                MessageBox.Show("Edited successfully!!!");
+                clsDatabase.closeConnection();
+                btnUpdate.Enabled = false;
+                initialize_reservation_list();
+                clearAllBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvReservationList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            int selectedRowIndex = e.RowIndex;
+            DataGridViewRow selectedRow = dgvReservationList.Rows[selectedRowIndex];
+            string reservation_id = selectedRow.Cells["reservation_id"].Value.ToString();
+            string customer_name = selectedRow.Cells["customer_name"].Value.ToString();
+            string phone = selectedRow.Cells["phone"].Value.ToString();
+            string email = selectedRow.Cells["email"].Value.ToString();
+            DateTime reservation_date = Convert.ToDateTime(selectedRow.Cells["reservation_date"].Value);
+            int reservation_duration = Convert.ToInt32(selectedRow.Cells["reservation_duration"].Value);
+            tbReservationID.Text = reservation_id;
+            tbCustomerName.Text = customer_name;
+            tbPhoneNumber.Text = phone;
+            tbEmail.Text = email;
+            dtpDate.Value = reservation_date;
+            nupDuration.Value = reservation_duration;
+            btnUpdate.Enabled = true;
+            btnAdd.Enabled = false;
+            btnDelete.Enabled = true;
+            btnNew.Enabled = true;
+            //MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
+
+        }
     }
 }

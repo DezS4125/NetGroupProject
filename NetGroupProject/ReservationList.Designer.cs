@@ -68,6 +68,7 @@
             this.dgvReservationList.Size = new System.Drawing.Size(746, 203);
             this.dgvReservationList.TabIndex = 1;
             this.dgvReservationList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservationList_CellContentClick);
+            this.dgvReservationList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvReservationList_RowHeaderMouseClick);
             // 
             // btnNew
             // 
@@ -99,6 +100,7 @@
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
