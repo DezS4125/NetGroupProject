@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,18 +17,46 @@ namespace NetGroupProject
         public Statistic()
         {
             InitializeComponent();
-            // Create a Series object and add it to the chart
+            initializeRevenueChart();
+
+        }
+        private void initializeRevenueChart()
+        {
             Series series = new Series("MyData");
             series.ChartType = SeriesChartType.Line;
             chart1.Series.Add(series);
+            DateTime currentDate = DateTime.Now;
+            for (int i =11; i>=0; i--)
+            {
+                int year = currentDate.AddMonths(-i).Year;
+                int month = currentDate.AddMonths(-i).Month;
 
-            // Add data points to the series
-            series.Points.AddXY(1, 10);
-            series.Points.AddXY(2, 20);
-            series.Points.AddXY(3, 30);
-            series.Points.AddXY(4, 40);
-            series.Points.AddXY(7, 40);
-
+                decimal revenue = getMonthRevenue(year, month);
+                string x_axis = year.ToString()+"-"+month.ToString();
+                series.Points.AddXY(x_axis, revenue);
+            }
+        }
+        private decimal getMonthRevenue(int year,int month)
+        {
+            try
+            {
+                clsDatabase.openConnection();
+                SqlCommand com = new SqlCommand("SELECT dbo.GetTotalMoneyForMonth(@year , @month)", clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@year", SqlDbType.Int);
+                p1.Value = year;
+                com.Parameters.Add(p1);
+                SqlParameter p2 = new SqlParameter("@month", SqlDbType.Int);
+                p2.Value = month;
+                com.Parameters.Add(p2); 
+                decimal revenue = Convert.ToDecimal(com.ExecuteScalar());
+                clsDatabase.closeConnection();
+                return revenue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            return -1;
         }
     }
 }

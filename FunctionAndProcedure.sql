@@ -49,7 +49,6 @@ END;
 select * from invoice_details;
 EXEC updateOrInsertInvoiceDetails @invoiceId = 1, @foodId = 3, @quantity = 12;
 
-
 CREATE FUNCTION GetTotalMoneyForMonth(@Year INT, @Month INT)
 RETURNS MONEY
 AS
@@ -57,7 +56,7 @@ BEGIN
     DECLARE @TotalMoney MONEY;
 
     SELECT 
-        @TotalMoney = SUM(total_money)
+        @TotalMoney = ISNULL(SUM(total_money), 0)
     FROM 
         invoices
     WHERE 
@@ -68,4 +67,4 @@ BEGIN
 END;
 
 
-SELECT dbo.GetTotalMoneyForMonth(2024, 3);
+SELECT dbo.GetTotalMoneyForMonth(2024, 1);
