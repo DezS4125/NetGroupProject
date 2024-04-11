@@ -64,7 +64,6 @@ create table invoice_details(
 	foreign key(food_id) references foods(food_id)
 )
 
-drop table table_reservation;
 create table table_reservation(
 	reservation_id int identity(1,1) primary key,
 	user_id int references users(user_id),
@@ -72,6 +71,14 @@ create table table_reservation(
 	reservation_date datetime not null,
 	reservation_duration int check (reservation_duration > 0)
 )
+
+create table customer(
+	customer_id int identity(1,1) primary key,
+	customer_name nvarchar(50),
+	phone varchar(20),
+	email nvarchar(50)
+)
+
 
 -- Inserting data into the positions table
 INSERT INTO positions (position_name) VALUES ('Manager');
@@ -122,6 +129,13 @@ insert into table_reservation(user_id, table_id, reservation_date, reservation_d
 																								(1, 1, '2024-04-14T20:00:00', 2),
 																								(2, 2, '2024-04-15T18:00:00', 2),
 																								(2, 2, '2024-04-16T19:30:00', 3);
+
+insert into customer(customer_name, phone, email) values ('John Doe', '123-456-7890', 'johndoe@example.com'),
+														('Jane Smith', '234-567-8901', 'janesmith@example.com'),
+														('Bob Johnson', '345-678-9012', 'bobjohnson@example.com'),
+														('Alice Williams', '456-789-0123', 'alicewilliams@example.com'),
+														('Charlie Brown', '567-890-1234', 'charliebrown@example.com');
+
 
 select * from table_reservation
 select * from dining_tables
