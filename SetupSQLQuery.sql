@@ -64,6 +64,15 @@ create table invoice_details(
 	foreign key(food_id) references foods(food_id)
 )
 
+drop table table_reservation;
+create table table_reservation(
+	reservation_id int identity(1,1) primary key,
+	user_id int references users(user_id),
+	table_id int references dining_tables(table_id),
+	reservation_date datetime not null,
+	reservation_duration int check (reservation_duration > 0)
+)
+
 -- Inserting data into the positions table
 INSERT INTO positions (position_name) VALUES ('Manager');
 INSERT INTO positions (position_name) VALUES ('Waiter');
@@ -108,6 +117,13 @@ select invoice_id,user_name, invoice_date,table_name,total_money from invoices a
 	join users as u on i.user_id = u.user_id
 	join dining_tables as d on i.table_id = d.table_id
 
+insert into table_reservation(user_id, table_id, reservation_date, reservation_duration) values	(1, 1, '2024-04-12T18:30:00', 2),
+																								(1, 2, '2024-04-13T19:00:00', 3),
+																								(1, 1, '2024-04-14T20:00:00', 2),
+																								(2, 2, '2024-04-15T18:00:00', 2),
+																								(2, 2, '2024-04-16T19:30:00', 3);
+
+select * from table_reservation
 
 select user_id, user_name from users
 
