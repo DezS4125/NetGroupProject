@@ -64,6 +64,21 @@ create table invoice_details(
 	foreign key(food_id) references foods(food_id)
 )
 
+create table menus(
+	menu_id int identity(1,1) primary key,
+	menu_name nvarchar(100) not null,
+	created_date datetime not null default getdate(),
+	menu_description nvarchar(100)
+);
+
+create table menu_details(
+	menu_id int,
+	food_id int,
+	primary key(menu_id, food_id),
+    foreign key(menu_id) references menus(menu_id),
+    foreign key(food_id) references foods(food_id)
+);
+
 -- Inserting data into the positions table
 INSERT INTO positions (position_name) VALUES ('Manager');
 INSERT INTO positions (position_name) VALUES ('Waiter');
@@ -101,6 +116,15 @@ INSERT INTO invoices (user_id, table_id, total_money) VALUES (2, 2, 22.50);
 INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (1, 1, 2);
 INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (1, 2, 1);
 INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (2, 3, 3);
+
+--Inserting data into the menus table 
+INSERT INTO menus (menu_name,created_date, menu_description) VALUES('menu sáng', '2024-02-02','món ăn nhẹ'); 
+INSERT INTO menus (menu_name,created_date, menu_description) VALUES('menu tối', '2024-03-04','món ăn tráng miệng');
+
+--Inserting data into the menu_details table
+INSERT INTO menu_details (menu_id, food_id) VALUES ('1','2'); 
+INSERT INTO menu_details (menu_id, food_id) VALUES ('2','1');
+INSERT INTO menu_details (menu_id, food_id) VALUES ('2','2');
 
 select * from dining_tables
 select * from users
