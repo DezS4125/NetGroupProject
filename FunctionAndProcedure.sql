@@ -48,3 +48,24 @@ END;
 
 select * from invoice_details;
 EXEC updateOrInsertInvoiceDetails @invoiceId = 1, @foodId = 3, @quantity = 12;
+
+
+CREATE FUNCTION GetTotalMoneyForMonth(@Year INT, @Month INT)
+RETURNS MONEY
+AS
+BEGIN
+    DECLARE @TotalMoney MONEY;
+
+    SELECT 
+        @TotalMoney = SUM(total_money)
+    FROM 
+        invoices
+    WHERE 
+        DATEPART(YEAR, invoice_date) = @Year AND
+        DATEPART(MONTH, invoice_date) = @Month;
+
+    RETURN @TotalMoney;
+END;
+
+
+SELECT dbo.GetTotalMoneyForMonth(2024, 3);

@@ -147,3 +147,5 @@ select reservation_id, user_name, customer_name, phone, t.email, reservation_dat
 	from table_reservation as t
 	join users as u on t.user_id = u.user_id
 	where table_id=1
+
+select * from invoices
