@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -90,6 +91,12 @@
     <Compile Include="ReservationList.Designer.cs">
       <DependentUpon>ReservationList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Statistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistic.Designer.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableReservation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +142,9 @@
     </Compile>
     <EmbeddedResource Include="ReservationList.resx">
       <DependentUpon>ReservationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic.resx">
+      <DependentUpon>Statistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TableReservation.resx">
       <DependentUpon>TableReservation.cs</DependentUpon>

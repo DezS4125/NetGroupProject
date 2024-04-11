@@ -55,5 +55,11 @@ namespace NetGroupProject
             TableReservation tableReservationPage = new TableReservation(userID);
             tableReservationPage.ShowDialog();
         }
+
+        private void btnRevenueStatistic_Click(object sender, EventArgs e)
+        {
+            Statistic statisticPage = new Statistic();
+            statisticPage.ShowDialog();
+        }
     }
 }
