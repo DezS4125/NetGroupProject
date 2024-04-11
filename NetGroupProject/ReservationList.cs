@@ -44,6 +44,13 @@ namespace NetGroupProject
                 datatable.Load(reader);
 
                 dgvReservationList.DataSource = datatable;
+                dgvReservationList.Columns["reservation_id"].HeaderText = "Reservation ID";
+                dgvReservationList.Columns["user_name"].HeaderText = "Employee Name";
+                dgvReservationList.Columns["customer_name"].HeaderText = "Customer Name";
+                dgvReservationList.Columns["phone"].HeaderText = "Phone";
+                dgvReservationList.Columns["email"].HeaderText = "Email";
+                dgvReservationList.Columns["reservation_date"].HeaderText = "Reservation Date";
+                dgvReservationList.Columns["reservation_duration"].HeaderText = "Duration";
                 clsDatabase.closeConnection();
             }
             catch (Exception ex)
