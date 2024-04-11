@@ -206,5 +206,29 @@ namespace NetGroupProject
             //MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strInsert = "DELETE FROM table_reservation WHERE reservation_id = @reservation_id";
+                clsDatabase.openConnection();
+                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@reservation_id", SqlDbType.Int);
+                p1.Value = tbReservationID.Text;
+                con.Parameters.Add(p1);
+                con.ExecuteNonQuery();
+                MessageBox.Show("Deleted successfully!!!");
+                clsDatabase.closeConnection();
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                initialize_reservation_list();
+                clearAllBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
