@@ -52,9 +52,39 @@ namespace NetGroupProject
                 MessageBox.Show(ex.ToString());
             }
         }
+        private void clearAllBox()
+        {
+            tbReservationID.Clear();
+            tbCustomerName.Clear();
+            tbPhoneNumber.Clear();
+            tbEmail.Clear();
+            dtpDate.Value = DateTime.Now;
+            nupDuration.Value = 2;
+        }
         private void btnNew_Click(object sender, EventArgs e)
         {
+            try
+            {
+                clearAllBox();
+                clsDatabase.openConnection();
 
+                SqlCommand com = new SqlCommand(
+                    "SELECT max(reservation_id)+1 from table_reservation",
+                    clsDatabase.con
+                );
+
+                tbReservationID.Text = com.ExecuteScalar().ToString();
+
+                clsDatabase.closeConnection();
+                btnAdd.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnNew.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvReservationList_CellContentClick(object sender, DataGridViewCellEventArgs e)
