@@ -96,18 +96,31 @@ namespace NetGroupProject
 
             try
             {
-                string strInsert = "insert into customer(customer_name, phone, email) values (@customer_name, @user_id, @table_id)";
+                string strInsert = "insert into table_reservation(user_id, customer_name, phone, email, table_id, reservation_date, reservation_duration) " +
+                                    "values (@user_id, @customer_name, @phone, @email, @table_id, @reservation_date, @reservation_duration)";
                 clsDatabase.openConnection();
                 SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
-                SqlParameter p1 = new SqlParameter("@customer_name", SqlDbType.NVarChar);
-                p1.Value = tbCustomerName.Text;
-                SqlParameter p2 = new SqlParameter("@phone", SqlDbType.NVarChar);
-                p2.Value = tbPhoneNumber.Text;
-                SqlParameter p3 = new SqlParameter("@email", SqlDbType.NVarChar);
-                p3.Value = tbEmail.Text;
+                SqlParameter p1 = new SqlParameter("@user_id", SqlDbType.Int);
+                p1.Value = Convert.ToInt32(userID);
+                SqlParameter p2 = new SqlParameter("@customer_name", SqlDbType.NVarChar);
+                p2.Value = tbCustomerName.Text;
+                SqlParameter p3 = new SqlParameter("@phone", SqlDbType.NVarChar);
+                p3.Value = tbPhoneNumber.Text;
+                SqlParameter p4 = new SqlParameter("@email", SqlDbType.NVarChar);
+                p4.Value = tbEmail.Text;
+                SqlParameter p5 = new SqlParameter("@table_id", SqlDbType.Int);
+                p5.Value = tableID;
+                SqlParameter p6 = new SqlParameter("@reservation_date", SqlDbType.SmallDateTime);
+                p6.Value = dtpDate.Value;
+                SqlParameter p7 = new SqlParameter("@reservation_duration", SqlDbType.Int);
+                p7.Value = nupDuration.Value;
                 con.Parameters.Add(p1);
                 con.Parameters.Add(p2);
                 con.Parameters.Add(p3);
+                con.Parameters.Add(p4);
+                con.Parameters.Add(p5);
+                con.Parameters.Add(p6);
+                con.Parameters.Add(p7);
                 con.ExecuteNonQuery();
 
                 MessageBox.Show("Insert successfully!!!");

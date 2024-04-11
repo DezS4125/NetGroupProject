@@ -147,9 +147,11 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDate.Location = new System.Drawing.Point(157, 343);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpDate.Size = new System.Drawing.Size(136, 20);
             this.dtpDate.TabIndex = 10;
             // 
             // nupDuration
