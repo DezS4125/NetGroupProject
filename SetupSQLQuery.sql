@@ -124,7 +124,7 @@ insert into table_reservation(user_id, table_id, reservation_date, reservation_d
 																								(2, 2, '2024-04-16T19:30:00', 3);
 
 select * from table_reservation
-
+select * from dining_tables
 select user_id, user_name from users
 
 select table_id, table_name from dining_tables

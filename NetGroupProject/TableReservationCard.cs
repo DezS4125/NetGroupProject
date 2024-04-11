@@ -16,5 +16,10 @@ namespace NetGroupProject
         {
             InitializeComponent();
         }
+
+        private void lblTableName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
