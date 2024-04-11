@@ -29,10 +29,9 @@ namespace NetGroupProject
                 clsDatabase.openConnection();
 
                 SqlCommand com = new SqlCommand(
-                    "select reservation_id, user_name, customer_name, phone, c.email, reservation_date, reservation_duration " +
+                    "select reservation_id, user_name, customer_name, phone, t.email, reservation_date, reservation_duration " +
                     "from table_reservation as t " +
                     "join users as u on t.user_id = u.user_id " +
-                    "join customer as c on t.customer_id = c.customer_id "+
                     "where table_id=@tableID",
                     clsDatabase.con
                 );
@@ -90,6 +89,37 @@ namespace NetGroupProject
         private void dgvReservationList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string strInsert = "insert into customer(customer_name, phone, email) values (@customer_name, @user_id, @table_id)";
+                clsDatabase.openConnection();
+                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@customer_name", SqlDbType.NVarChar);
+                p1.Value = tbCustomerName.Text;
+                SqlParameter p2 = new SqlParameter("@phone", SqlDbType.NVarChar);
+                p2.Value = tbPhoneNumber.Text;
+                SqlParameter p3 = new SqlParameter("@email", SqlDbType.NVarChar);
+                p3.Value = tbEmail.Text;
+                con.Parameters.Add(p1);
+                con.Parameters.Add(p2);
+                con.Parameters.Add(p3);
+                con.ExecuteNonQuery();
+
+                MessageBox.Show("Insert successfully!!!");
+                clsDatabase.closeConnection();
+                btnAdd.Enabled = false;
+                btnNew.Enabled = true;
+                initialize_reservation_list();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

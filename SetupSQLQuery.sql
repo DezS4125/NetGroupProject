@@ -67,18 +67,14 @@ create table invoice_details(
 create table table_reservation(
 	reservation_id int identity(1,1) primary key,
 	user_id int references users(user_id),
-	customer_id int references customer(customer_id),
+	customer_name nvarchar(50),
+	phone varchar(20),
+	email nvarchar(50),
 	table_id int references dining_tables(table_id),
 	reservation_date datetime not null,
 	reservation_duration int check (reservation_duration > 0)
 )
 
-create table customer(
-	customer_id int identity(1,1) primary key,
-	customer_name nvarchar(50),
-	phone varchar(20),
-	email nvarchar(50)
-)
 
 
 -- Inserting data into the positions table
@@ -125,18 +121,11 @@ select invoice_id,user_name, invoice_date,table_name,total_money from invoices a
 	join users as u on i.user_id = u.user_id
 	join dining_tables as d on i.table_id = d.table_id
 
-insert into table_reservation(user_id, customer_id, table_id, reservation_date, reservation_duration) values	(1, 2, 1, '2024-04-12T18:30:00', 2),
-																												(1, 1, 2, '2024-04-13T19:00:00', 3),
-																												(1, 5, 1, '2024-04-14T20:00:00', 2),
-																												(2, 4, 2, '2024-04-15T18:00:00', 2),
-																												(2, 3, 2, '2024-04-16T19:30:00', 3);
-
-insert into customer(customer_name, phone, email) values ('John Doe', '123-456-7890', 'johndoe@example.com'),
-														('Jane Smith', '234-567-8901', 'janesmith@example.com'),
-														('Bob Johnson', '345-678-9012', 'bobjohnson@example.com'),
-														('Alice Williams', '456-789-0123', 'alicewilliams@example.com'),
-														('Charlie Brown', '567-890-1234', 'charliebrown@example.com');
-
+INSERT INTO table_reservation(user_id, customer_name, phone, email, table_id, reservation_date, reservation_duration) VALUES (1, 'John Doe', '123-456-7890', 'johndoe@example.com', 3, '2024-04-12 19:00:00', 2),
+																															(2, 'Jane Smith', '987-654-3210', 'janesmith@example.com', 3, '2024-04-13 20:00:00', 3),
+																															(1, 'Robert Johnson', '456-789-0123', 'robertjohnson@example.com', 2, '2024-04-14 18:30:00', 5),
+																															(2, 'Mary Davis', '789-012-3456', 'marydavis@example.com', 1, '2024-04-15 19:30:00', 2),
+																															(2, 'James Brown', '012-345-6789', 'jamesbrown@example.com', 2, '2024-04-16 20:30:00', 4);
 
 select * from table_reservation
 select * from dining_tables
@@ -154,8 +143,7 @@ select reservation_id, user_name, customer_name, phone, c.email, reservation_dat
 	join users as u on t.user_id = u.user_id
 	join customer as c on t.customer_id = c.customer_id
 	
-select reservation_id, user_name, customer_name, phone, c.email, reservation_date, reservation_duration
+select reservation_id, user_name, customer_name, phone, t.email, reservation_date, reservation_duration
 	from table_reservation as t
 	join users as u on t.user_id = u.user_id
-	join customer as c on t.customer_id = c.customer_id
-	where table_id=2
+	where table_id=1
