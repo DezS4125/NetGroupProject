@@ -135,6 +135,7 @@
             this.btnTableReservation.TabIndex = 3;
             this.btnTableReservation.Text = "Table Reservation";
             this.btnTableReservation.UseVisualStyleBackColor = true;
+            this.btnTableReservation.Click += new System.EventHandler(this.btnTableReservation_Click);
             // 
             // btnInvoiceManagement
             // 

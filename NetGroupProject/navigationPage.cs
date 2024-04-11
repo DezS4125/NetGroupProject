@@ -49,5 +49,11 @@ namespace NetGroupProject
             InvoiceManagement invoiceManagementPage = new InvoiceManagement();
             invoiceManagementPage.ShowDialog();
         }
+
+        private void btnTableReservation_Click(object sender, EventArgs e)
+        {
+            TableReservation tableReservationPage = new TableReservation();
+            tableReservationPage.ShowDialog();
+        }
     }
 }
