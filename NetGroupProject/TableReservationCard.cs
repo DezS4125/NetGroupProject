@@ -12,9 +12,11 @@ namespace NetGroupProject
 {
     public partial class TableReservationCard : UserControl
     {
-        public TableReservationCard()
+        public int table_id;
+        public TableReservationCard(int table_id)
         {
             InitializeComponent();
+            this.table_id = table_id;
         }
 
         private void lblTableName_Click(object sender, EventArgs e)

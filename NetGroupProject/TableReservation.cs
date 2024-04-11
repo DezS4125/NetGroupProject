@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,9 +35,11 @@ namespace NetGroupProject
 
                 while (reader.Read())
                 {
-                    Label label = new Label();
-                    label.Text = reader["table_name"].ToString();
-                    flpTableList.Controls.Add(label);
+                    int tableID = Convert.ToInt32(reader["table_id"]);
+                    TableReservationCard card = new TableReservationCard(tableID);
+                    card.lblTableName.Text = reader["table_name"].ToString();
+                    card.gbID.Text = "ID: " + tableID;
+                    flpTableList.Controls.Add(card);
                 }
 
                 reader.Close();
