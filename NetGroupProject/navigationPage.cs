@@ -52,7 +52,7 @@ namespace NetGroupProject
 
         private void btnTableReservation_Click(object sender, EventArgs e)
         {
-            TableReservation tableReservationPage = new TableReservation();
+            TableReservation tableReservationPage = new TableReservation(userID);
             tableReservationPage.ShowDialog();
         }
     }

@@ -14,9 +14,11 @@ namespace NetGroupProject
 {
     public partial class TableReservation : Form
     {
-        public TableReservation()
+        string userID;
+        public TableReservation(string userID)
         {
             InitializeComponent();
+            this.userID = userID;
             initialize_table_list();
         }
 
@@ -36,7 +38,7 @@ namespace NetGroupProject
                 while (reader.Read())
                 {
                     int tableID = Convert.ToInt32(reader["table_id"]);
-                    TableReservationCard card = new TableReservationCard(tableID);
+                    TableReservationCard card = new TableReservationCard(tableID, userID);
                     card.lblTableName.Text = reader["table_name"].ToString();
                     card.gbID.Text = "ID: " + tableID;
                     flpTableList.Controls.Add(card);

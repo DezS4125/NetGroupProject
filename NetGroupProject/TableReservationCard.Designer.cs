@@ -53,6 +53,7 @@
             this.btnReserve.TabIndex = 1;
             this.btnReserve.Text = "Check Reservation";
             this.btnReserve.UseVisualStyleBackColor = true;
+            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
             // 
             // gbID
             // 

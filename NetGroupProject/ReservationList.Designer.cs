@@ -63,14 +63,15 @@
             // dgvReservationList
             // 
             this.dgvReservationList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservationList.Location = new System.Drawing.Point(157, 63);
+            this.dgvReservationList.Location = new System.Drawing.Point(66, 67);
             this.dgvReservationList.Name = "dgvReservationList";
-            this.dgvReservationList.Size = new System.Drawing.Size(552, 203);
+            this.dgvReservationList.Size = new System.Drawing.Size(746, 203);
             this.dgvReservationList.TabIndex = 1;
+            this.dgvReservationList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservationList_CellContentClick);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(667, 299);
+            this.btnNew.Location = new System.Drawing.Point(717, 299);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(108, 23);
             this.btnNew.TabIndex = 2;
@@ -80,7 +81,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(667, 333);
+            this.btnAdd.Location = new System.Drawing.Point(717, 333);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(108, 23);
             this.btnAdd.TabIndex = 3;
@@ -89,7 +90,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(667, 374);
+            this.btnUpdate.Location = new System.Drawing.Point(717, 374);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(108, 23);
             this.btnUpdate.TabIndex = 4;
@@ -98,7 +99,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(667, 415);
+            this.btnDelete.Location = new System.Drawing.Point(717, 415);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(108, 23);
             this.btnDelete.TabIndex = 5;
@@ -201,7 +202,7 @@
             this.tbCustomerName.AcceptsReturn = true;
             this.tbCustomerName.Location = new System.Drawing.Point(493, 301);
             this.tbCustomerName.Name = "tbCustomerName";
-            this.tbCustomerName.Size = new System.Drawing.Size(152, 20);
+            this.tbCustomerName.Size = new System.Drawing.Size(202, 20);
             this.tbCustomerName.TabIndex = 15;
             // 
             // tbPhoneNumber
@@ -215,14 +216,14 @@
             // 
             this.tbEmail.Location = new System.Drawing.Point(493, 381);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(152, 20);
+            this.tbEmail.Size = new System.Drawing.Size(202, 20);
             this.tbEmail.TabIndex = 17;
             // 
             // ReservationList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 450);
+            this.ClientSize = new System.Drawing.Size(871, 450);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbPhoneNumber);
             this.Controls.Add(this.tbCustomerName);
