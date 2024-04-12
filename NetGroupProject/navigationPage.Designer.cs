@@ -39,8 +39,10 @@
             this.btnInvoiceManagement = new System.Windows.Forms.Button();
             this.btnMenuManagement = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
+            this.groupProjectDataSet1 = new NetGroupProject.groupProjectDataSet();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -124,6 +126,7 @@
             this.btnRevenueStatistic.TabIndex = 4;
             this.btnRevenueStatistic.Text = "Revenue statistic";
             this.btnRevenueStatistic.UseVisualStyleBackColor = true;
+            this.btnRevenueStatistic.Click += new System.EventHandler(this.btnRevenueStatistic_Click);
             // 
             // btnTableReservation
             // 
@@ -135,6 +138,7 @@
             this.btnTableReservation.TabIndex = 3;
             this.btnTableReservation.Text = "Table Reservation";
             this.btnTableReservation.UseVisualStyleBackColor = true;
+            this.btnTableReservation.Click += new System.EventHandler(this.btnTableReservation_Click);
             // 
             // btnInvoiceManagement
             // 
@@ -170,6 +174,11 @@
             this.btnUserManagement.Text = "User Management";
             this.btnUserManagement.UseVisualStyleBackColor = true;
             // 
+            // groupProjectDataSet1
+            // 
+            this.groupProjectDataSet1.DataSetName = "groupProjectDataSet";
+            this.groupProjectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // navigationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +193,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +211,6 @@
         private System.Windows.Forms.Button btnInvoiceManagement;
         private System.Windows.Forms.Button btnMenuManagement;
         private System.Windows.Forms.Button btnUserManagement;
+        private groupProjectDataSet groupProjectDataSet1;
     }
 }
