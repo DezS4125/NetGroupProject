@@ -58,5 +58,56 @@ namespace NetGroupProject
             }
             return -1;
         }
+        private decimal getDayRevenue(int year, int month,int day)
+        {
+            try
+            {
+                clsDatabase.openConnection();
+                SqlCommand com = new SqlCommand("SELECT ISNULL(SUM(total_money), 0) "+
+                                            "FROM invoices "+
+                                            "WHERE DATEPART(YEAR, invoice_date) = @year " +
+                                            "AND DATEPART(MONTH, invoice_date) = @month"+
+                                            "And DATEPART(DAY, invoice_date) = @day", clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@year", SqlDbType.Int);
+                p1.Value = year;
+                com.Parameters.Add(p1);
+                SqlParameter p2 = new SqlParameter("@month", SqlDbType.Int);
+                p2.Value = month;
+                com.Parameters.Add(p2);
+                SqlParameter p3 = new SqlParameter("@day", SqlDbType.Int);
+                p3.Value = day;
+                com.Parameters.Add(p3);
+                decimal revenue = Convert.ToDecimal(com.ExecuteScalar());
+                clsDatabase.closeConnection();
+                return revenue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            return -1;
+        }
+
+        private decimal getYearRevenue(int year)
+        {
+            try
+            {
+                clsDatabase.openConnection();
+                SqlCommand com = new SqlCommand("SELECT ISNULL(SUM(total_money), 0) " +
+                                            "FROM invoices " +
+                                            "WHERE DATEPART(YEAR, invoice_date) = @year", clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@year", SqlDbType.Int);
+                p1.Value = year;
+                com.Parameters.Add(p1);
+                decimal revenue = Convert.ToDecimal(com.ExecuteScalar());
+                clsDatabase.closeConnection();
+                return revenue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            return -1;
+        }
     }
 }
