@@ -18,11 +18,18 @@ namespace NetGroupProject
         {
             InitializeComponent();
             initializeRevenueChart();
-
+            DateTime currentDate = DateTime.Now;
+            int year = currentDate.Year;
+            int month = currentDate.Month;
+            int day = currentDate.Day;
+            tbTodayRevenue.Text = getDayRevenue(year,month,day).ToString();
+            tbThisMonthRevenue.Text = getMonthRevenue(year,month).ToString();
+            tbThisYearRevenue.Text = getYearRevenue(year).ToString();
+            tbSalaryCost.Text = getMonthlySalaryCost().ToString();
         }
         private void initializeRevenueChart()
         {
-            Series series = new Series("MyData");
+            Series series = new Series("Revenue");
             series.ChartType = SeriesChartType.Line;
             chart1.Series.Add(series);
             DateTime currentDate = DateTime.Now;
@@ -66,7 +73,7 @@ namespace NetGroupProject
                 SqlCommand com = new SqlCommand("SELECT ISNULL(SUM(total_money), 0) "+
                                             "FROM invoices "+
                                             "WHERE DATEPART(YEAR, invoice_date) = @year " +
-                                            "AND DATEPART(MONTH, invoice_date) = @month"+
+                                            "AND DATEPART(MONTH, invoice_date) = @month "+
                                             "And DATEPART(DAY, invoice_date) = @day", clsDatabase.con);
                 SqlParameter p1 = new SqlParameter("@year", SqlDbType.Int);
                 p1.Value = year;
@@ -108,6 +115,28 @@ namespace NetGroupProject
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
             return -1;
+        }
+        private int getMonthlySalaryCost()
+        {
+            try
+            {
+                clsDatabase.openConnection();
+                SqlCommand com = new SqlCommand("SELECT ISNULL(SUM(salary), 0) " +
+                                            "FROM users ", clsDatabase.con);
+                int sum = Convert.ToInt32(com.ExecuteScalar());
+                clsDatabase.closeConnection();
+                return sum;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            return -1;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
