@@ -28,8 +28,10 @@ create table food_categories(
 create table foods(
 	food_id int identity(1,1) primary key, 
 	food_name nvarchar(100) not null, 
+	food_price MONEY check (food_price>0),
 	category_id int references food_categories(category_id)
 )
+	 
 
 create table food_prices(
 	food_price_id int identity(1,1) primary key, 
@@ -111,6 +113,10 @@ INSERT INTO foods (food_name, category_id) VALUES ('Spring Rolls', 1);
 INSERT INTO foods (food_name, category_id) VALUES ('Pho', 2);
 INSERT INTO foods (food_name, category_id) VALUES ('Cheesecake', 3);
 
+UPDATE foods SET food_price = 10000 WHERE food_name = 'Spring Rolls';
+UPDATE foods SET food_price = 50000 WHERE food_name = 'Pho';
+UPDATE foods SET food_price = 70000 WHERE food_name = 'Cheesecake';
+
 -- Inserting data into the food_prices table
 INSERT INTO food_prices (food_id, price_date, price) VALUES (1, '2024-01-01', 5.00);
 INSERT INTO food_prices (food_id, price_date, price) VALUES (2, '2024-01-01', 10.00);
@@ -120,6 +126,9 @@ INSERT INTO food_prices (food_id, price_date, price) VALUES (3, '2024-01-01', 7.
 INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 1', 'empty');
 INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 2', 'reserved');
 INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 3', 'in use');
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 4', 'empty');
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 5', 'reserved');
+INSERT INTO dining_tables (table_name, table_status) VALUES ('Table 6', 'in use');
 
 -- Inserting data into the invoices table
 INSERT INTO invoices (user_id, table_id, total_money) VALUES (1, 1, 15.00);
@@ -175,3 +184,5 @@ select reservation_id, user_name, customer_name, phone, t.email, reservation_dat
 select * from users
 
 select IDENT_CURRENT('invoices')+1
+
+select * from foods
