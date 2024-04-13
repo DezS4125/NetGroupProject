@@ -62,6 +62,7 @@
             // 
             // dgvReservationList
             // 
+            this.dgvReservationList.AllowUserToAddRows = false;
             this.dgvReservationList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservationList.Location = new System.Drawing.Point(66, 67);
             this.dgvReservationList.Name = "dgvReservationList";

@@ -36,11 +36,9 @@
             this.dgvInvoiceList = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbInvoiceID = new System.Windows.Forms.TextBox();
             this.dtpInvoiceDate = new System.Windows.Forms.DateTimePicker();
-            this.cbUser = new System.Windows.Forms.ComboBox();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTable = new NetGroupProject.usersTable();
             this.cbTable = new System.Windows.Forms.ComboBox();
@@ -109,9 +107,11 @@
             // 
             // dgvInvoiceList
             // 
+            this.dgvInvoiceList.AllowUserToAddRows = false;
             this.dgvInvoiceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInvoiceList.Location = new System.Drawing.Point(181, 97);
             this.dgvInvoiceList.Name = "dgvInvoiceList";
+            this.dgvInvoiceList.ReadOnly = true;
             this.dgvInvoiceList.Size = new System.Drawing.Size(545, 152);
             this.dgvInvoiceList.TabIndex = 4;
             this.dgvInvoiceList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceList_CellEndEdit);
@@ -136,19 +136,10 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Invoice Date";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 359);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Employee";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 390);
+            this.label5.Location = new System.Drawing.Point(43, 364);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 8;
@@ -169,17 +160,6 @@
             this.dtpInvoiceDate.Size = new System.Drawing.Size(200, 20);
             this.dtpInvoiceDate.TabIndex = 10;
             // 
-            // cbUser
-            // 
-            this.cbUser.DataSource = this.usersBindingSource;
-            this.cbUser.DisplayMember = "user_name";
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(123, 356);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(200, 21);
-            this.cbUser.TabIndex = 11;
-            this.cbUser.ValueMember = "user_id";
-            // 
             // usersBindingSource
             // 
             this.usersBindingSource.DataMember = "users";
@@ -195,7 +175,7 @@
             this.cbTable.DataSource = this.diningtablesBindingSource;
             this.cbTable.DisplayMember = "table_name";
             this.cbTable.FormattingEnabled = true;
-            this.cbTable.Location = new System.Drawing.Point(123, 390);
+            this.cbTable.Location = new System.Drawing.Point(123, 361);
             this.cbTable.Name = "cbTable";
             this.cbTable.Size = new System.Drawing.Size(134, 21);
             this.cbTable.TabIndex = 12;
@@ -290,11 +270,9 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbTable);
-            this.Controls.Add(this.cbUser);
             this.Controls.Add(this.dtpInvoiceDate);
             this.Controls.Add(this.tbInvoiceID);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvInvoiceList);
@@ -326,11 +304,9 @@
         private System.Windows.Forms.DataGridView dgvInvoiceList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbInvoiceID;
         private System.Windows.Forms.DateTimePicker dtpInvoiceDate;
-        private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.ComboBox cbTable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

@@ -33,7 +33,7 @@ namespace NetGroupProject
                 clsDatabase.openConnection();
 
                 SqlCommand com = new SqlCommand(
-                    "SELECT max(invoice_id)+1 from invoices",
+                    "select IDENT_CURRENT('invoices')+1",
                     clsDatabase.con
                 );
 
@@ -56,7 +56,6 @@ namespace NetGroupProject
             tbInvoiceID.Clear();
             tbTotalMoney.Clear();
             dtpInvoiceDate.Value = DateTime.Now;
-            cbUser.SelectedIndex = -1;
             cbTable.SelectedIndex = -1;
         }
         private void initialize_invoice_list()
@@ -124,7 +123,7 @@ namespace NetGroupProject
                 SqlParameter p1 = new SqlParameter("@invoice_date", SqlDbType.SmallDateTime);
                 p1.Value = dtpInvoiceDate.Value;
                 SqlParameter p2 = new SqlParameter("@user_id", SqlDbType.Int);
-                p2.Value = cbUser.SelectedValue;
+                p2.Value = userID;
                 SqlParameter p3 = new SqlParameter("@table_id", SqlDbType.Int);
                 p3.Value = cbTable.SelectedValue;
                 SqlParameter p4 = new SqlParameter("@total_money", SqlDbType.Money);
@@ -173,7 +172,7 @@ namespace NetGroupProject
                 SqlParameter p1 = new SqlParameter("@invoice_date", SqlDbType.SmallDateTime);
                 p1.Value = dtpInvoiceDate.Value;
                 SqlParameter p2 = new SqlParameter("@user_id", SqlDbType.Int);
-                p2.Value = cbUser.SelectedValue;
+                p2.Value = userID;
                 SqlParameter p3 = new SqlParameter("@table_id", SqlDbType.Int);
                 p3.Value = cbTable.SelectedValue;
                 SqlParameter p4 = new SqlParameter("@total_money", SqlDbType.Money);
@@ -208,7 +207,6 @@ namespace NetGroupProject
             string totalMoney = selectedRow.Cells["total_money"].Value.ToString();
             tbInvoiceID.Text = invoiceID;
             dtpInvoiceDate.Value= invoiceDate;
-            cbUser.SelectedValue= userID;
             cbTable.SelectedValue= tableID;
             tbTotalMoney.Text = totalMoney;
             btnUpdateInvoice.Enabled = true;

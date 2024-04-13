@@ -46,7 +46,7 @@ namespace NetGroupProject
 
         private void btnInvoiceManagement_Click(object sender, EventArgs e)
         {
-            InvoiceManagement invoiceManagementPage = new InvoiceManagement();
+            InvoiceManagement invoiceManagementPage = new InvoiceManagement(userID);
             invoiceManagementPage.ShowDialog();
         }
 

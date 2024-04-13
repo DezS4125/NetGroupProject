@@ -173,3 +173,5 @@ select reservation_id, user_name, customer_name, phone, t.email, reservation_dat
 	where table_id=1
 
 select * from users
+
+select IDENT_CURRENT('invoices')+1
