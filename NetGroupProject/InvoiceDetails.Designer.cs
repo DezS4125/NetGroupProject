@@ -34,16 +34,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbQuantity = new System.Windows.Forms.TextBox();
             this.cbFood = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupProjectDataSet1 = new NetGroupProject.groupProjectDataSet1();
             this.foodsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupProjectDataSet1 = new NetGroupProject.groupProjectDataSet1();
+            this.label3 = new System.Windows.Forms.Label();
             this.foodsTableAdapter = new NetGroupProject.groupProjectDataSet1TableAdapters.foodsTableAdapter();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbPrice = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetailsList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvInvoiceDetailsList
@@ -92,6 +94,16 @@
             this.cbFood.TabIndex = 5;
             this.cbFood.ValueMember = "food_id";
             // 
+            // foodsBindingSource
+            // 
+            this.foodsBindingSource.DataMember = "foods";
+            this.foodsBindingSource.DataSource = this.groupProjectDataSet1;
+            // 
+            // groupProjectDataSet1
+            // 
+            this.groupProjectDataSet1.DataSetName = "groupProjectDataSet1";
+            this.groupProjectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -101,16 +113,6 @@
             this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Invoice Details";
-            // 
-            // groupProjectDataSet1
-            // 
-            this.groupProjectDataSet1.DataSetName = "groupProjectDataSet1";
-            this.groupProjectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // foodsBindingSource
-            // 
-            this.foodsBindingSource.DataMember = "foods";
-            this.foodsBindingSource.DataSource = this.groupProjectDataSet1;
             // 
             // foodsTableAdapter
             // 
@@ -146,11 +148,30 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(27, 272);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Price";
+            // 
+            // tbPrice
+            // 
+            this.tbPrice.Location = new System.Drawing.Point(103, 269);
+            this.tbPrice.Name = "tbPrice";
+            this.tbPrice.ReadOnly = true;
+            this.tbPrice.Size = new System.Drawing.Size(121, 20);
+            this.tbPrice.TabIndex = 11;
+            // 
             // InvoiceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 312);
+            this.Controls.Add(this.tbPrice);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
@@ -164,8 +185,8 @@
             this.Text = "InvoiceDetails";
             this.Load += new System.EventHandler(this.InvoiceDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetailsList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupProjectDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +206,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbPrice;
     }
 }
