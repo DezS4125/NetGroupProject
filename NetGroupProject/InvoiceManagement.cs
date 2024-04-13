@@ -259,13 +259,19 @@ namespace NetGroupProject
         {
             try
             {
-                string strInsert = "DELETE FROM invoices WHERE invoice_id = @invoice_id";
+                string strInsert = "DELETE FROM invoice_details WHERE invoice_id = @invoice_id";
+                string strInsert2 = "DELETE FROM invoices WHERE invoice_id = @invoice_id";
                 clsDatabase.openConnection();
-                SqlCommand con = new SqlCommand(strInsert, clsDatabase.con);
+                SqlCommand com = new SqlCommand(strInsert, clsDatabase.con);
+                SqlCommand com2 = new SqlCommand(strInsert2, clsDatabase.con);
                 SqlParameter p1 = new SqlParameter("@invoice_id", SqlDbType.Int);
-                p1.Value = tbInvoiceID.Text;
-                con.Parameters.Add(p1);
-                con.ExecuteNonQuery();
+                p1.Value = Convert.ToInt32(tbInvoiceID.Text);
+                com.Parameters.Add(p1);
+                com.ExecuteNonQuery();
+                SqlParameter p2 = new SqlParameter("@invoice_id", SqlDbType.Int);
+                p2.Value = Convert.ToInt32(tbInvoiceID.Text);
+                com2.Parameters.Add(p2);
+                com2.ExecuteNonQuery();
                 MessageBox.Show("Deleted successfully!!!");
                 clsDatabase.closeConnection();
                 btnUpdateInvoice.Enabled = false;
