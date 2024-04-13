@@ -140,8 +140,8 @@ INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (1, 2, 1);
 INSERT INTO invoice_details (invoice_id, food_id, quantity) VALUES (2, 3, 3);
 
 --Inserting data into the menus table 
-INSERT INTO menus (menu_name,created_date, menu_description) VALUES('menu sáng', '2024-02-02','món ăn nhẹ'); 
-INSERT INTO menus (menu_name,created_date, menu_description) VALUES('menu tối', '2024-03-04','món ăn tráng miệng');
+INSERT INTO menus (menu_name,created_date, menu_description) VALUES(N'Menu sáng', '2024-02-02',N'Món ăn nhẹ'); 
+INSERT INTO menus (menu_name,created_date, menu_description) VALUES(N'Menu tối', '2024-03-04',N'Món tráng miệng');
 
 --Inserting data into the menu_details table
 INSERT INTO menu_details (menu_id, food_id) VALUES ('1','2'); 

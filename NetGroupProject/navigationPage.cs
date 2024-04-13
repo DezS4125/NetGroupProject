@@ -67,5 +67,12 @@ namespace NetGroupProject
             User_Management user_Management_form = new User_Management();
             user_Management_form.ShowDialog();
         }
+
+        private void btnMenuManagement_Click(object sender, EventArgs e)
+        {
+            Menu_management menu_Management_form = new Menu_management();
+            menu_Management_form.ShowDialog();
+
+        }
     }
 }

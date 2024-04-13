@@ -162,6 +162,7 @@
             this.btnMenuManagement.TabIndex = 1;
             this.btnMenuManagement.Text = "Menu Management";
             this.btnMenuManagement.UseVisualStyleBackColor = true;
+            this.btnMenuManagement.Click += new System.EventHandler(this.btnMenuManagement_Click);
             // 
             // btnUserManagement
             // 

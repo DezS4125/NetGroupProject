@@ -77,6 +77,12 @@
       <DependentUpon>InvoiceManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Log.cs" />
+    <Compile Include="MenuManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement.Designer.cs">
+      <DependentUpon>MenuManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="navigationPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceManagement.resx">
       <DependentUpon>InvoiceManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuManagement.resx">
+      <DependentUpon>MenuManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="navigationPage.resx">
       <DependentUpon>navigationPage.cs</DependentUpon>
