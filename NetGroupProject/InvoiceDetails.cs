@@ -25,6 +25,9 @@ namespace NetGroupProject
             dgvInvoiceDetailsList.Columns["food_id"].Visible = false;
             string foodID = "1";
             tbPrice.Text = findPriceFromFoodID(foodID).ToString();
+            dgvInvoiceDetailsList.Columns["food_name"].HeaderText = "Food Name";
+            dgvInvoiceDetailsList.Columns["quantity"].HeaderText = "Quantity";
+            dgvInvoiceDetailsList.Columns["food_price"].HeaderText = "Price Per Item";
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
