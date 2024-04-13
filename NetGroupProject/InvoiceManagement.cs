@@ -16,10 +16,12 @@ namespace NetGroupProject
     public partial class InvoiceManagement : Form
     {
         DataTable dataTableInvoiceDetails;
-        public InvoiceManagement()
+        string userID;
+        public InvoiceManagement(string userID)
         {
             InitializeComponent();
             initialize_invoice_list();
+            this.userID = userID;
         }
 
 
@@ -80,7 +82,7 @@ namespace NetGroupProject
                 dgvInvoiceList.Columns["table_id"].Visible = false;
 
                 dgvInvoiceList.Columns["invoice_id"].HeaderText = "Invoice ID";
-                dgvInvoiceList.Columns["user_name"].HeaderText = "Employee name";
+                dgvInvoiceList.Columns["user_name"].HeaderText = "Employee Name";
                 dgvInvoiceList.Columns["invoice_date"].HeaderText = "Date";
                 dgvInvoiceList.Columns["table_name"].HeaderText = "Table Name";
                 dgvInvoiceList.Columns["total_money"].HeaderText = "Total Money";
