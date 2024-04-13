@@ -141,18 +141,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(43, 359);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "User ID";
+            this.label4.Text = "Employee";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(43, 390);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Table ID";
+            this.label5.Text = "Table";
             // 
             // tbInvoiceID
             // 

@@ -78,6 +78,13 @@ namespace NetGroupProject
                 dgvInvoiceList.DataSource = datatable;
                 dgvInvoiceList.Columns["user_id"].Visible = false;
                 dgvInvoiceList.Columns["table_id"].Visible = false;
+
+                dgvInvoiceList.Columns["invoice_id"].HeaderText = "Invoice ID";
+                dgvInvoiceList.Columns["user_name"].HeaderText = "Employee name";
+                dgvInvoiceList.Columns["invoice_date"].HeaderText = "Date";
+                dgvInvoiceList.Columns["table_name"].HeaderText = "Table Name";
+                dgvInvoiceList.Columns["total_money"].HeaderText = "Total Money";
+
                 clsDatabase.closeConnection();
             }
             catch (Exception ex)
