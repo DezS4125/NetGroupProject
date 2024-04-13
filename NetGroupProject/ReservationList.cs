@@ -75,7 +75,7 @@ namespace NetGroupProject
                 clsDatabase.openConnection();
 
                 SqlCommand com = new SqlCommand(
-                    "SELECT max(reservation_id)+1 from table_reservation",
+                    "select IDENT_CURRENT('table_reservation')+1",
                     clsDatabase.con
                 );
 
