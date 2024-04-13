@@ -23,8 +23,7 @@ namespace NetGroupProject
             InitializeComponent();
             dgvInvoiceDetailsList.DataSource = data;
             dgvInvoiceDetailsList.Columns["food_id"].Visible = false;
-            string foodID = "1";
-            tbPrice.Text = findPriceFromFoodID(foodID).ToString();
+            tbPrice.Text = findPriceFromFoodID("1").ToString();
             dgvInvoiceDetailsList.Columns["food_name"].HeaderText = "Food Name";
             dgvInvoiceDetailsList.Columns["quantity"].HeaderText = "Quantity";
             dgvInvoiceDetailsList.Columns["food_price"].HeaderText = "Price Per Item";

@@ -44,6 +44,7 @@ namespace NetGroupProject
                 btnUpdateInvoice.Enabled = false;
                 btnNewInvoice.Enabled = false;
                 btnDelete.Enabled = false;
+                btnEditInvoiceDetails.Enabled = true;
                 collectInvoiceDetailsByIds(Convert.ToInt32(tbInvoiceID.Text));
             }
             catch (Exception ex)
@@ -57,6 +58,7 @@ namespace NetGroupProject
             tbTotalMoney.Clear();
             dtpInvoiceDate.Value = DateTime.Now;
             cbTable.SelectedIndex = -1;
+            btnEditInvoiceDetails.Enabled = false;
         }
         private void initialize_invoice_list()
         {
@@ -213,6 +215,7 @@ namespace NetGroupProject
             btnAddInvoice.Enabled = false;
             btnDelete.Enabled = true;
             btnNewInvoice.Enabled = true;
+            btnEditInvoiceDetails.Enabled = true;
             collectInvoiceDetailsByIds(Convert.ToInt32(invoiceID));
             //MessageBox.Show(dataTableInvoiceDetails.Rows.Count + " rows found in the DataTable.");
 
@@ -244,6 +247,7 @@ namespace NetGroupProject
                 columnTotal.Expression = "quantity * food_price";
 
                 dataTableInvoiceDetails.Columns.Add(columnTotal);
+                updateTotalMoney();
                 clsDatabase.closeConnection();
             }
             catch (Exception ex)
@@ -279,6 +283,7 @@ namespace NetGroupProject
         {
             InvoiceDetails invoiceDetailsForm = new InvoiceDetails(dataTableInvoiceDetails);
             invoiceDetailsForm.ShowDialog();
+            updateTotalMoney();
         }
         private void addOrUpdateInvoiceDetail()
         {
@@ -314,6 +319,15 @@ namespace NetGroupProject
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+        private void updateTotalMoney()
+        {
+            decimal total=0;
+            foreach (DataRow row in dataTableInvoiceDetails.Rows)
+            {
+                total += Convert.ToInt32(row["Total"]);
+            }
+            tbTotalMoney.Text = total.ToString();
         }
     }
 }

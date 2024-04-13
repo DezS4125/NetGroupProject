@@ -213,11 +213,13 @@
             // 
             this.tbTotalMoney.Location = new System.Drawing.Point(511, 290);
             this.tbTotalMoney.Name = "tbTotalMoney";
+            this.tbTotalMoney.ReadOnly = true;
             this.tbTotalMoney.Size = new System.Drawing.Size(155, 20);
             this.tbTotalMoney.TabIndex = 15;
             // 
             // btnEditInvoiceDetails
             // 
+            this.btnEditInvoiceDetails.Enabled = false;
             this.btnEditInvoiceDetails.Location = new System.Drawing.Point(511, 323);
             this.btnEditInvoiceDetails.Name = "btnEditInvoiceDetails";
             this.btnEditInvoiceDetails.Size = new System.Drawing.Size(155, 23);
