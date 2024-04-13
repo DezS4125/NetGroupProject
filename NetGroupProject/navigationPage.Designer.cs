@@ -173,6 +173,7 @@
             this.btnUserManagement.TabIndex = 0;
             this.btnUserManagement.Text = "User Management";
             this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
             // groupProjectDataSet1
             // 

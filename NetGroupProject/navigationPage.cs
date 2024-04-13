@@ -61,5 +61,11 @@ namespace NetGroupProject
             Statistic statisticPage = new Statistic();
             statisticPage.ShowDialog();
         }
+
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+            User_Management user_Management_form = new User_Management();
+            user_Management_form.ShowDialog();
+        }
     }
 }
