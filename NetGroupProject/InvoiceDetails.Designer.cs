@@ -50,17 +50,19 @@
             // 
             // dgvInvoiceDetailsList
             // 
+            this.dgvInvoiceDetailsList.AllowUserToAddRows = false;
+            this.dgvInvoiceDetailsList.AllowUserToDeleteRows = false;
             this.dgvInvoiceDetailsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoiceDetailsList.Location = new System.Drawing.Point(90, 57);
+            this.dgvInvoiceDetailsList.Location = new System.Drawing.Point(56, 58);
             this.dgvInvoiceDetailsList.Name = "dgvInvoiceDetailsList";
-            this.dgvInvoiceDetailsList.Size = new System.Drawing.Size(243, 133);
+            this.dgvInvoiceDetailsList.Size = new System.Drawing.Size(445, 133);
             this.dgvInvoiceDetailsList.TabIndex = 0;
             this.dgvInvoiceDetailsList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInvoiceDetailsList_RowHeaderMouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 216);
+            this.label1.Location = new System.Drawing.Point(100, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 1;
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 246);
+            this.label2.Location = new System.Drawing.Point(100, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 2;
@@ -77,7 +79,7 @@
             // 
             // tbQuantity
             // 
-            this.tbQuantity.Location = new System.Drawing.Point(103, 243);
+            this.tbQuantity.Location = new System.Drawing.Point(176, 240);
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(121, 20);
             this.tbQuantity.TabIndex = 4;
@@ -88,11 +90,12 @@
             this.cbFood.DataSource = this.foodsBindingSource;
             this.cbFood.DisplayMember = "food_name";
             this.cbFood.FormattingEnabled = true;
-            this.cbFood.Location = new System.Drawing.Point(103, 212);
+            this.cbFood.Location = new System.Drawing.Point(176, 209);
             this.cbFood.Name = "cbFood";
             this.cbFood.Size = new System.Drawing.Size(121, 21);
             this.cbFood.TabIndex = 5;
             this.cbFood.ValueMember = "food_id";
+            this.cbFood.SelectedIndexChanged += new System.EventHandler(this.cbFood_SelectedIndexChanged);
             // 
             // foodsBindingSource
             // 
@@ -108,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(139, 25);
+            this.label3.Location = new System.Drawing.Point(212, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 6;
@@ -120,7 +123,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(272, 206);
+            this.btnAdd.Location = new System.Drawing.Point(343, 208);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 7;
@@ -130,7 +133,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(272, 233);
+            this.btnUpdate.Location = new System.Drawing.Point(343, 238);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 8;
@@ -140,7 +143,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(272, 262);
+            this.btnDelete.Location = new System.Drawing.Point(343, 264);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 9;
@@ -151,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 272);
+            this.label4.Location = new System.Drawing.Point(100, 269);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 10;
@@ -159,7 +162,7 @@
             // 
             // tbPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(103, 269);
+            this.tbPrice.Location = new System.Drawing.Point(176, 266);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.ReadOnly = true;
             this.tbPrice.Size = new System.Drawing.Size(121, 20);
@@ -169,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 312);
+            this.ClientSize = new System.Drawing.Size(559, 312);
             this.Controls.Add(this.tbPrice);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);

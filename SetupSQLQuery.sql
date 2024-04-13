@@ -185,4 +185,4 @@ select * from users
 
 select IDENT_CURRENT('invoices')+1
 
-select * from foods
+select food_price from foods where food_id =1

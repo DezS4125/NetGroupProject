@@ -224,7 +224,7 @@ namespace NetGroupProject
                 clsDatabase.openConnection();
 
                 SqlCommand com = new SqlCommand(
-                    "SELECT i.food_id, food_name, quantity " +
+                    "SELECT i.food_id, food_name, quantity, food_price " +
                     "FROM invoice_details AS i " +
                     "JOIN foods AS f on  i.food_id = f.food_id " +
                     "where invoice_id=@invoice_id",
@@ -238,6 +238,12 @@ namespace NetGroupProject
                 SqlDataReader reader = com.ExecuteReader();
                 this.dataTableInvoiceDetails = new DataTable();
                 this.dataTableInvoiceDetails.Load(reader);
+                DataColumn columnTotal = new DataColumn();
+                columnTotal.DataType = System.Type.GetType("System.Decimal");
+                columnTotal.ColumnName = "Total";
+                columnTotal.Expression = "quantity * food_price";
+
+                dataTableInvoiceDetails.Columns.Add(columnTotal);
                 clsDatabase.closeConnection();
             }
             catch (Exception ex)

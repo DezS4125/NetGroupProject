@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace NetGroupProject
             InitializeComponent();
             dgvInvoiceDetailsList.DataSource = data;
             dgvInvoiceDetailsList.Columns["food_id"].Visible = false;
+            string foodID = "1";
+            tbPrice.Text = findPriceFromFoodID(foodID).ToString();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -53,6 +56,7 @@ namespace NetGroupProject
             newRow["food_id"] = cbFood.SelectedValue;
             newRow["food_name"] = cbFood.Text;
             newRow["quantity"] = tbQuantity.Text;
+            newRow["food_price"] = findPriceFromFoodID(cbFood.SelectedValue.ToString()).ToString();
             data.Rows.Add(newRow);
         }
 
@@ -63,12 +67,41 @@ namespace NetGroupProject
             newRow["food_id"] = cbFood.SelectedValue;
             newRow["food_name"] = cbFood.Text;
             newRow["quantity"] = tbQuantity.Text;
+            newRow["food_price"] = findPriceFromFoodID(cbFood.SelectedValue.ToString()).ToString();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DataTable data = (DataTable)dgvInvoiceDetailsList.DataSource;
             data.Rows.RemoveAt(selectedRowIndex);
+        }
+        private decimal findPriceFromFoodID(string foodID)
+        {
+            try
+            {
+                clsDatabase.openConnection();
+                SqlCommand com = new SqlCommand("SELECT food_price " +
+                                            "FROM foods " +
+                                            "WHERE food_id = @food_id", clsDatabase.con);
+                SqlParameter p1 = new SqlParameter("@food_id", SqlDbType.Int);
+                p1.Value = Convert.ToInt32(foodID);
+                com.Parameters.Add(p1);
+                decimal price = Convert.ToDecimal(com.ExecuteScalar());
+                clsDatabase.closeConnection();
+                return price;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            return -1;
+        }
+
+        private void cbFood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string foodID = cbFood.SelectedValue.ToString();
+            tbPrice.Text = findPriceFromFoodID(foodID).ToString();
+
         }
     }
 }
