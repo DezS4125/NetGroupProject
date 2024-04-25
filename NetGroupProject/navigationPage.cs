@@ -32,7 +32,7 @@ namespace NetGroupProject
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            log.writeLogFile("User ID-" + userID + " logged into the system");
+            log.writeLogFile("User ID-" + userID + " logged out of the system");
             this.Hide();
             Form1 loginPage = new Form1();
             loginPage.ShowDialog();

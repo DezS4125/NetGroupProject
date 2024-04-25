@@ -36,7 +36,6 @@ namespace NetGroupProject
 
         private void InvoiceDetails_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'groupProjectDataSet1.foods' table. You can move, or remove it, as needed.
             this.foodsTableAdapter.Fill(this.groupProjectDataSet1.foods);
 
         }
